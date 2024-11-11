@@ -1,4 +1,7 @@
 // payment-service/src/models/paymentHistory.js
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
+
 const PaymentHistory = sequelize.define('PaymentHistory', {
     paymentId: {
       type: DataTypes.INTEGER,

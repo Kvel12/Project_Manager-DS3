@@ -1,0 +1,8 @@
+{"level":"info","message":"Auth service running on port 3001","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 21:40:15"}
+{"level":"info","message":"Database connection established successfully.","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 21:40:15"}
+{"level":"info","message":"Auth service running on port 3001","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 21:51:45"}
+{"level":"info","message":"Database connection established successfully.","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 21:51:46"}
+{"level":"info","message":"Auth service running on port 3001","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 22:16:59"}
+{"level":"info","message":"Database connection established successfully.","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 22:17:00"}
+{"level":"info","message":"Auth service running on port 3001","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 22:26:33"}
+{"level":"info","message":"Database connection established successfully.","metadata":{"environment":"development","service":"auth-service"},"timestamp":"2024-11-11 22:26:33"}

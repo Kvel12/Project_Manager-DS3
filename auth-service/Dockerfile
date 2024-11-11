@@ -1,41 +1,43 @@
-# Usar una imagen base de Node.js
+# Auth Service Dockerfile
 FROM node:18-alpine
 
 # Crear directorio de la aplicación
 WORKDIR /usr/src/app
 
-# Instalar dependencias del sistema
+# Instalar dependencias necesarias
 RUN apk add --no-cache \
     python3 \
     make \
-    g++
+    g++ \
+    postgresql-client
+
+# Crear directorio para logs
+RUN mkdir -p logs
 
 # Copiar archivos de configuración
 COPY package*.json ./
-
-# Instalar dependencias
 RUN npm install --production
 
-# Copiar código fuente
+# Copiar código fuente y script de entrada
 COPY . .
+COPY docker-entrypoint.sh /usr/src/app/
 
-# Crear directorio para logs
-RUN mkdir -p logs && \
-    chown -R node:node logs
+# Configurar permisos (antes de cambiar al usuario node)
+RUN chmod +x /usr/src/app/docker-entrypoint.sh && \
+    chown -R node:node /usr/src/app
 
-# Variables de entorno
+# Variables de entorno por defecto
 ENV NODE_ENV=production
 ENV PORT=3001
 
 # Cambiar a usuario no root
 USER node
 
-# Exponer puerto
+# Puerto por defecto
 EXPOSE 3001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3001/auth/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3001/health || exit 1
 
-# Comando para ejecutar la aplicación
-CMD ["npm", "start"]
+ENTRYPOINT ["/usr/src/app/docker-entrypoint.sh"]

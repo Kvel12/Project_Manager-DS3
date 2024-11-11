@@ -1,7 +1,7 @@
 // auth-service/src/index.js
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/authRoutes');
 const monitor = require('./sidecars/monitoring/monitor');
 const logger = require('./sidecars/logging/logger');
 

@@ -1,27 +1,19 @@
 // auth-service/src/sagas/authSaga.js
-const User = require('../models/user');
+const { User } = require('../models');
+const jwt = require('jsonwebtoken');
 const logger = require('../sidecars/logging/logger');
 const monitor = require('../sidecars/monitoring/monitor');
 
 class AuthSaga {
   async executeRegistration(userData) {
+    const sagaId = `reg-${Date.now()}`;
     let user = null;
-    const sagaId = Date.now(); // ID único para rastrear la saga
-    
+
     try {
-      logger.info(`Starting registration saga ${sagaId}`);
-      monitor.recordEvent('saga_started');
+      logger.info(`Starting registration saga: ${sagaId}`);
+      monitor.recordSagaStart(sagaId);
 
-      // Paso 1: Verificar si el usuario ya existe
-      const existingUser = await User.findOne({
-        where: { username: userData.username }
-      });
-
-      if (existingUser) {
-        throw new Error('Username already exists');
-      }
-
-      // Paso 2: Crear usuario en estado pendiente
+      // Paso 1: Crear usuario en estado pendiente
       user = await User.create({
         ...userData,
         status: 'pending'
@@ -29,60 +21,73 @@ class AuthSaga {
 
       logger.info(`User created in pending state: ${user.id}`);
 
-      // Paso 3: Validación (simulada)
+      // Paso 2: Validación simulada (aquí podrías agregar validación de email, etc.)
       await this.simulateValidation(user.id);
 
-      // Paso 4: Activar usuario
-      await user.update({ status: 'active' });
-      
-      logger.info(`Registration saga ${sagaId} completed successfully`);
-      monitor.recordEvent('saga_completed');
+      // Paso 3: Activar usuario
+      await user.update({ 
+        status: 'active' 
+      });
+
+      // Paso 4: Generar token
+      const token = jwt.sign(
+        { 
+          userId: user.id,
+          role: user.role
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      logger.info(`Registration saga completed successfully: ${sagaId}`);
+      monitor.recordSagaSuccess(sagaId);
 
       return {
         success: true,
-        userId: user.id,
-        status: 'active'
+        user,
+        token
       };
 
     } catch (error) {
-      logger.error(`Registration saga ${sagaId} failed:`, error);
-      monitor.recordEvent('saga_failed');
+      logger.error(`Registration saga failed: ${sagaId}`, error);
+      monitor.recordSagaFailure(sagaId);
 
-      // Ejecutar compensación si es necesario
-      if (user) {
-        await this.compensate(user.id, error);
-      }
-
+      // Ejecutar compensación
+      await this.compensate(user, error);
       throw error;
     }
   }
 
-  async simulateValidation(userId) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 100);
-    });
-  }
+  async compensate(user, error) {
+    logger.info(`Starting compensation for user: ${user?.id}`);
+    monitor.recordEvent('saga_compensation_started');
 
-  async compensate(userId, error) {
     try {
-      logger.info(`Starting compensation for user ${userId}`);
-      
-      // Marcar usuario como inactivo en lugar de eliminarlo
-      await User.update(
-        { status: 'inactive' },
-        { where: { id: userId } }
-      );
+      if (user) {
+        // En lugar de eliminar el usuario, lo marcamos como inactivo
+        await user.update({
+          status: 'inactive',
+          metadata: {
+            compensationReason: error.message,
+            compensationTime: new Date()
+          }
+        });
 
-      logger.info(`Compensation completed for user ${userId}`);
-      monitor.recordEvent('compensation_completed');
+        logger.info(`User marked as inactive: ${user.id}`);
+      }
 
+      monitor.recordEvent('saga_compensation_completed');
     } catch (compensationError) {
       logger.error('Compensation failed:', compensationError);
-      monitor.recordEvent('compensation_failed');
-      // En caso de error en la compensación, podríamos notificar a un sistema de monitoreo
-      throw compensationError;
+      monitor.recordEvent('saga_compensation_failed');
+      // Aquí podrías implementar un sistema de alertas para compensaciones fallidas
     }
   }
-}
 
-module.exports = new AuthSaga();
+  async simulateValidation(userId) {
+    // Simulación de proceso de validación
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    logger.info(`Validation completed for user: ${userId}`);
+    return true;
+  }
+}

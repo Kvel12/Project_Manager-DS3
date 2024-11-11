@@ -1,82 +1,147 @@
 // auth-service/src/sidecars/monitoring/monitor.js
 class MonitorService {
-    constructor() {
-      this.metrics = {
-        requests: {
-          login: { success: 0, failure: 0 },
-          register: { success: 0, failure: 0 }
-        },
-        responseTimes: {
-          login: [],
-          register: []
-        },
-        errors: [],
-        lastCheck: Date.now()
-      };
-  
-      // Limpiar métricas antiguas cada hora
-      setInterval(() => this.cleanOldMetrics(), 3600000);
-    }
-  
-    recordEvent(type, result) {
-      if (!this.metrics.requests[type]) {
-        this.metrics.requests[type] = { success: 0, failure: 0 };
-      }
-      this.metrics.requests[type][result === 'success' ? 'success' : 'failure']++;
-    }
-  
-    recordResponseTime(type, time) {
-      if (!this.metrics.responseTimes[type]) {
-        this.metrics.responseTimes[type] = [];
-      }
-      this.metrics.responseTimes[type].push(time);
-    }
-  
-    recordError(error) {
-      this.metrics.errors.push({
-        timestamp: Date.now(),
-        message: error.message
-      });
-    }
-  
-    getMetrics() {
-      return {
-        uptime: process.uptime(),
-        requests: this.metrics.requests,
-        averageResponseTimes: this.calculateAverageResponseTimes(),
-        errorRate: this.calculateErrorRate(),
-        lastCheck: this.metrics.lastCheck
-      };
-    }
-  
-    calculateAverageResponseTimes() {
-      const averages = {};
-      for (const [type, times] of Object.entries(this.metrics.responseTimes)) {
-        if (times.length > 0) {
-          averages[type] = times.reduce((a, b) => a + b) / times.length;
-        }
-      }
-      return averages;
-    }
-  
-    calculateErrorRate() {
-      const total = Object.values(this.metrics.requests)
-        .reduce((acc, curr) => acc + curr.success + curr.failure, 0);
-      const failures = Object.values(this.metrics.requests)
-        .reduce((acc, curr) => acc + curr.failure, 0);
-      return total === 0 ? 0 : (failures / total) * 100;
-    }
-  
-    cleanOldMetrics() {
-      for (const type in this.metrics.responseTimes) {
-        this.metrics.responseTimes[type] = 
-          this.metrics.responseTimes[type].slice(-100); // Mantener últimas 100 mediciones
-      }
-      this.metrics.errors = 
-        this.metrics.errors.filter(e => 
-          Date.now() - e.timestamp < 3600000); // Mantener errores de última hora
-      this.metrics.lastCheck = Date.now();
-    }
+  constructor() {
+    this.metrics = {
+      operations: {
+        register: { success: 0, failure: 0 },
+        login: { success: 0, failure: 0 },
+        validate: { success: 0, failure: 0 }
+      },
+      sagas: {
+        started: 0,
+        completed: 0,
+        failed: 0,
+        compensation: 0
+      },
+      responseTimes: {},
+      activeUsers: new Set(),
+      errors: [],
+      lastUpdated: new Date()
+    };
+
+    // Limpiar métricas antiguas cada hora
+    setInterval(() => this.cleanOldMetrics(), 3600000);
   }
-  
-  module.exports = new MonitorService();
+
+  recordSuccessfulOperation(operation) {
+    if (!this.metrics.operations[operation]) {
+      this.metrics.operations[operation] = { success: 0, failure: 0 };
+    }
+    this.metrics.operations[operation].success++;
+    this.updateMetrics();
+  }
+
+  recordFailedOperation(operation, reason) {
+    if (!this.metrics.operations[operation]) {
+      this.metrics.operations[operation] = { success: 0, failure: 0 };
+    }
+    this.metrics.operations[operation].failure++;
+    this.recordError(operation, reason);
+    this.updateMetrics();
+  }
+
+  recordResponseTime(operation, time) {
+    if (!this.metrics.responseTimes[operation]) {
+      this.metrics.responseTimes[operation] = [];
+    }
+    this.metrics.responseTimes[operation].push({
+      time,
+      timestamp: new Date()
+    });
+    this.updateMetrics();
+  }
+
+  recordStatusCode(operation, statusCode) {
+    if (!this.metrics.operations[operation]) {
+      this.metrics.operations[operation] = { success: 0, failure: 0 };
+    }
+    if (statusCode >= 400) {
+      this.metrics.operations[operation].failure++;
+    } else {
+      this.metrics.operations[operation].success++;
+    }
+    this.updateMetrics();
+  }
+
+  recordError(operation, error) {
+    this.metrics.errors.push({
+      operation,
+      error,
+      timestamp: new Date()
+    });
+    // Mantener solo los últimos 100 errores
+    if (this.metrics.errors.length > 100) {
+      this.metrics.errors.shift();
+    }
+    this.updateMetrics();
+  }
+
+  recordSagaStart(sagaId) {
+    this.metrics.sagas.started++;
+    this.updateMetrics();
+  }
+
+  recordSagaSuccess(sagaId) {
+    this.metrics.sagas.completed++;
+    this.updateMetrics();
+  }
+
+  recordSagaFailure(sagaId) {
+    this.metrics.sagas.failed++;
+    this.updateMetrics();
+  }
+
+  getMetrics() {
+    return {
+      ...this.metrics,
+      averageResponseTimes: this.calculateAverageResponseTimes(),
+      errorRate: this.calculateErrorRate(),
+      activeUserCount: this.metrics.activeUsers.size
+    };
+  }
+
+  calculateAverageResponseTimes() {
+    const averages = {};
+    for (const [operation, times] of Object.entries(this.metrics.responseTimes)) {
+      if (times.length > 0) {
+        const sum = times.reduce((acc, curr) => acc + curr.time, 0);
+        averages[operation] = sum / times.length;
+      }
+    }
+    return averages;
+  }
+
+  calculateErrorRate() {
+    let totalOperations = 0;
+    let totalErrors = 0;
+
+    Object.values(this.metrics.operations).forEach(op => {
+      totalOperations += op.success + op.failure;
+      totalErrors += op.failure;
+    });
+
+    return totalOperations === 0 ? 0 : (totalErrors / totalOperations) * 100;
+  }
+
+  cleanOldMetrics() {
+    const oneHourAgo = new Date(Date.now() - 3600000);
+    
+    // Limpiar tiempos de respuesta antiguos
+    Object.keys(this.metrics.responseTimes).forEach(operation => {
+      this.metrics.responseTimes[operation] = this.metrics.responseTimes[operation]
+        .filter(item => item.timestamp > oneHourAgo);
+    });
+
+    // Limpiar errores antiguos
+    this.metrics.errors = this.metrics.errors
+      .filter(error => error.timestamp > oneHourAgo);
+
+    this.updateMetrics();
+  }
+
+  updateMetrics() {
+    this.metrics.lastUpdated = new Date();
+  }
+}
+
+module.exports = new MonitorService();

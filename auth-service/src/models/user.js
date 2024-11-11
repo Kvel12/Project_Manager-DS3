@@ -22,7 +22,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [6, 100] // La contraseña hasheada será más larga
+      len: [6, 100] // Para password hasheada
     }
   },
   name: {
@@ -33,8 +33,21 @@ const User = sequelize.define('User', {
       len: [2, 100]
     }
   },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  role: {
+    type: DataTypes.ENUM('admin', 'user'),
+    defaultValue: 'user',
+    allowNull: false
+  },
   status: {
-    type: DataTypes.ENUM('pending', 'active', 'inactive'),
+    type: DataTypes.ENUM('active', 'inactive', 'pending'),
     defaultValue: 'pending',
     allowNull: false
   },
@@ -44,8 +57,7 @@ const User = sequelize.define('User', {
   },
   loginAttempts: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
-    allowNull: false
+    defaultValue: 0
   },
   lockedUntil: {
     type: DataTypes.DATE,
@@ -62,28 +74,20 @@ const User = sequelize.define('User', {
 }, {
   hooks: {
     beforeCreate: async (user) => {
-      // Se puede agregar lógica adicional antes de crear el usuario
       user.status = 'pending';
     },
     afterCreate: async (user) => {
-      // Se puede agregar lógica después de crear el usuario
       const logger = require('../sidecars/logging/logger');
       logger.info(`New user created: ${user.id}`);
     }
-  },
-  indexes: [
-    {
-      unique: true,
-      fields: ['username']
-    }
-  ]
+  }
 });
 
 // Métodos de instancia
 User.prototype.incrementLoginAttempts = async function() {
   this.loginAttempts += 1;
   if (this.loginAttempts >= 5) {
-    this.lockedUntil = new Date(Date.now() + 30 * 60000); // Bloquear por 30 minutos
+    this.lockedUntil = new Date(Date.now() + 30 * 60000); // 30 minutos de bloqueo
   }
   await this.save();
 };
