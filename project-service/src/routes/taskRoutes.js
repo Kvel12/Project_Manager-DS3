@@ -17,6 +17,14 @@ const taskValidation = validationMiddleware.body({
   projectId: { type: 'number', required: true }
 });
 
+const monitorRoute = (routeName) => (req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    monitor.recordResponseTime(routeName, Date.now() - start);
+  });
+  next();
+};
+
 // Rutas de tareas
 router.post('/',
   authMiddleware,

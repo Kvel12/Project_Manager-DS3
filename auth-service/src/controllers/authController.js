@@ -1,10 +1,10 @@
 // auth-service/src/controllers/authController.js
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { Op } = require('sequelize');
 const { User } = require('../models');
 const logger = require('../sidecars/logging/logger');
 const monitor = require('../sidecars/monitoring/monitor');
-const AuthSaga = require('../sagas/authSaga');
 
 class AuthController {
   async register(req, res) {

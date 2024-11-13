@@ -1,34 +1,37 @@
 // payment-service/src/models/paymentHistory.js
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
 
-const PaymentHistory = sequelize.define('PaymentHistory', {
+module.exports = (sequelize) => {
+  const PaymentHistory = sequelize.define("PaymentHistory", {
     paymentId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Payments',
-        key: 'id'
-      }
+        model: "Payments",
+        key: "id",
+      },
     },
     oldStatus: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     newStatus: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     reason: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
     },
     metadata: {
       type: DataTypes.JSONB,
-      allowNull: true
+      allowNull: true,
     },
     createdAt: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+      defaultValue: DataTypes.NOW,
+    },
   });
+  return PaymentHistory;
+};

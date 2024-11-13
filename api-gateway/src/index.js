@@ -1,32 +1,25 @@
 // api-gateway/src/index.js
 const express = require('express');
-const cors = require('./middleware/cors');
-const { checkRedisHealth } = require('./middleware/rate-limit');
+const cors = require('cors');
 const routes = require('./routes');
-const { globalErrorHandler, notFoundHandler } = require('./errors/handlers');
 const logger = require('./utils/logger');
-const config = require('./config');
 
 const app = express();
 
 // Middleware básicos
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors);
 
-// Health check de Redis para rate limiting
-app.use(checkRedisHealth);
-
-// Logging de requests
+// Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   res.on('finish', () => {
-    const duration = Date.now() - start;
     logger.info('Request processed', {
       method: req.method,
       path: req.path,
       statusCode: res.statusCode,
-      duration,
+      duration: Date.now() - start,
       ip: req.ip
     });
   });
@@ -40,22 +33,33 @@ app.use('/api', routes);
 app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
-    uptime: process.uptime(),
-    timestamp: new Date()
+    timestamp: new Date(),
+    uptime: process.uptime()
   });
 });
 
-// Manejo de rutas no encontradas
-app.use(notFoundHandler);
+// Error handler
+app.use((err, req, res, next) => {
+  logger.error('Error handling request:', err);
+  res.status(500).json({
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+});
 
-// Manejo de errores global
-app.use(globalErrorHandler);
+// Solo iniciar el servidor Express si no estamos usando Nginx
+if (process.env.USE_EXPRESS_SERVER === 'true') {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    logger.info(`API Gateway Express server running on port ${PORT}`);
+  });
+}
 
-// Manejo de errores de proceso
+// Manejo de errores no capturados
 process.on('unhandledRejection', (reason, promise) => {
   logger.error('Unhandled Rejection at:', {
     promise,
-    reason,
+    reason: reason.toString(),
     stack: reason.stack
   });
 });
@@ -69,7 +73,4 @@ process.on('uncaughtException', (error) => {
   setTimeout(() => process.exit(1), 1000);
 });
 
-const PORT = config.server.port;
-app.listen(PORT, () => {
-  logger.info(`API Gateway running on port ${PORT}`);
-});
+module.exports = app;

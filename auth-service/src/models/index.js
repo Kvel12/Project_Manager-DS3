@@ -1,8 +1,23 @@
 // auth-service/src/models/index.js
-const sequelize = require('../config/database');
-const User = require('./user');
+const { Sequelize } = require('sequelize');
+const config = require('../config');
 
-module.exports = {
+const sequelize = new Sequelize(
+  config.database.name,
+  config.database.user,
+  config.database.password,
+  {
+    host: config.database.host,
+    port: config.database.port,
+    dialect: config.database.dialect,
+    logging: false
+  }
+);
+
+const db = {
   sequelize,
-  User
+  Sequelize,
+  User: require('./user')
 };
+
+module.exports = db;

@@ -1,52 +1,65 @@
 // auth-service/src/index.js
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const monitor = require('./sidecars/monitoring/monitor');
+const { sequelize } = require('./models');
+const authRoutes = require('./routes/');
 const logger = require('./sidecars/logging/logger');
+const monitor = require('./sidecars/monitoring/monitor');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Monitoring middleware
+// Logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
-  
   res.on('finish', () => {
     const duration = Date.now() - start;
-    monitor.recordRequest(
-      res.statusCode < 400,
-      duration,
-      req.user?.id
-    );
+    logger.info(`Request processed: ${req.method} ${req.path}`, {
+      method: req.method,
+      path: req.path,
+      statusCode: res.statusCode,
+      duration
+    });
+    monitor.recordResponseTime(`${req.method}:${req.path}`, duration);
   });
-  
   next();
 });
 
-// Routes
 app.use('/auth', authRoutes);
 
-// Monitoring endpoint
-app.get('/metrics', (req, res) => {
-  res.json(monitor.getMetrics());
+// Health check
+app.get('/health', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json({ status: 'healthy' });
+  } catch (error) {
+    logger.error('Health check failed:', error);
+    res.status(503).json({ status: 'unhealthy' });
+  }
 });
 
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy' });
-});
+const PORT = process.env.PORT || 3001;
+
+// Sincronizar base de datos y luego iniciar servidor
+sequelize.sync({ force: true }) // En producción, usar force: false
+  .then(() => {
+    app.listen(PORT, () => {
+      logger.info(`Auth service running on port ${PORT}`);
+    });
+  })
+  .catch(error => {
+    logger.error('Unable to sync database:', error);
+    process.exit(1);
+  });
 
 // Error handling
-app.use((err, req, res, next) => {
-  logger.error('Unhandled error:', err);
-  res.status(500).json({ message: 'Internal server error' });
+process.on('unhandledRejection', (reason, promise) => {
+  logger.error('Unhandled Rejection at:', { reason });
 });
 
-app.listen(PORT, () => {
-  logger.info(`Auth service running on port ${PORT}`);
+process.on('uncaughtException', (error) => {
+  logger.error('Uncaught Exception:', error);
+  process.exit(1);
 });

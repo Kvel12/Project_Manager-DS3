@@ -91,6 +91,21 @@ class MonitorService {
     this.updateMetrics();
   }
 
+  recordRequest(method, path, statusCode, duration) {
+    const key = `${method}:${path}`;
+    if (!this.metrics.operations[key]) {
+      this.metrics.operations[key] = { success: 0, failure: 0 };
+    }
+    
+    if (statusCode < 400) {
+      this.metrics.operations[key].success++;
+    } else {
+      this.metrics.operations[key].failure++;
+    }
+    
+    this.recordResponseTime(key, duration);
+  }
+
   getMetrics() {
     return {
       ...this.metrics,
