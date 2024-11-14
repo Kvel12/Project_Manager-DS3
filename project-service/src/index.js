@@ -1,6 +1,7 @@
 // project-service/src/index.js
 const express = require('express');
 const cors = require('cors');
+const { sequelize } = require('./models');
 const config = require('./config');
 const projectRoutes = require('./routes/projectRoutes');
 const taskRoutes = require('./routes/taskRoutes');
@@ -30,8 +31,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
-app.use('/projects', projectRoutes);
+// Routes - Note: removed /projects prefix as it's handled by API Gateway
+app.use('/', projectRoutes);
 app.use('/tasks', taskRoutes);
 
 // Health check endpoint
@@ -48,16 +49,48 @@ app.get('/metrics', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   logger.error('Unhandled error:', err);
+  
+  if (err.name === 'SagaExecutionFailed') {
+    return res.status(400).json({
+      message: err.message,
+      details: err.compensationResults
+    });
+  }
+
+  if (err.name === 'CircuitBreakerError') {
+    return res.status(503).json({
+      message: 'Service temporarily unavailable',
+      retry: true
+    });
+  }
+
   res.status(500).json({ 
     message: 'Internal server error',
     error: process.env.NODE_ENV === 'development' ? err.message : undefined
   });
 });
 
-// Start server
-app.listen(config.service.port, () => {
-  logger.info(`Project service running on port ${config.service.port}`);
-});
+// Initialize database and start server
+async function startServer() {
+  try {
+    await sequelize.authenticate();
+    logger.info('Database connection established');
+    
+    if (process.env.NODE_ENV === 'development') {
+      await sequelize.sync({ alter: true });
+      logger.info('Database synchronized');
+    }
+
+    app.listen(config.service.port, () => {
+      logger.info(`Project service running on port ${config.service.port}`);
+    });
+  } catch (error) {
+    logger.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+startServer();
 
 process.on('unhandledRejection', (reason, promise) => {
   logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
@@ -65,6 +98,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 process.on('uncaughtException', (error) => {
   logger.error('Uncaught Exception:', error);
-  // Dar tiempo a que los logs se escriban antes de terminar
   setTimeout(() => process.exit(1), 1000);
 });
+
+module.exports = app;

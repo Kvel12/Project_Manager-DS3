@@ -2,9 +2,11 @@
 const jwt = require('jsonwebtoken');
 const CircuitBreaker = require('../utils/circuitBreaker');
 const logger = require('../sidecars/logging/logger');
+const config = require('../config');
 
 const authServiceBreaker = new CircuitBreaker({
-  timeout: 3000,
+  name: 'auth-service',
+  timeout: config.services.auth.timeout || 5000,
   errorThreshold: 3,
   resetTimeout: 30000
 });
@@ -14,31 +16,55 @@ async function authMiddleware(req, res, next) {
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {
+      logger.warn('No token provided');
       return res.status(401).json({ message: 'No token provided' });
     }
 
     try {
-      // Verificar token con auth-service usando circuit breaker
-      const userData = await authServiceBreaker.execute(async () => {
-        const response = await fetch('http://auth-service:3001/auth/validate', {
-          headers: { 'Authorization': `Bearer ${token}` }
+      // Intenta validar con auth-service primero
+      const validationResult = await authServiceBreaker.execute(async () => {
+        const response = await fetch(`${config.services.auth.url}/validate`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
         });
-        
+
         if (!response.ok) {
-          throw new Error('Invalid token');
+          const error = await response.json();
+          logger.error('Token validation failed:', error);
+          throw new Error(error.message || 'Token validation failed');
         }
-        
+
         return response.json();
       });
 
-      req.user = userData;
+      // Si la validación es exitosa
+      req.user = {
+        id: validationResult.userId,
+        role: validationResult.role
+      };
+
+      logger.info(`User authenticated: ${req.user.id}`);
       next();
+
     } catch (error) {
       if (error.name === 'CircuitBreakerError') {
-        // Si el circuit breaker está abierto, intentar validación local
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = { id: decoded.userId };
-        next();
+        logger.warn('Auth service is down, falling back to local validation');
+        
+        // Fallback: validación local del token
+        try {
+          const decoded = jwt.verify(token, config.jwt.secret);
+          req.user = {
+            id: decoded.userId,
+            role: decoded.role
+          };
+          next();
+        } catch (jwtError) {
+          logger.error('Local token validation failed:', jwtError);
+          res.status(401).json({ message: 'Invalid token' });
+        }
       } else {
         throw error;
       }
@@ -50,4 +76,3 @@ async function authMiddleware(req, res, next) {
 }
 
 module.exports = authMiddleware;
-

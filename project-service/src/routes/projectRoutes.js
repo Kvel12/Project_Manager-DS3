@@ -26,6 +26,26 @@ const projectValidation = validationMiddleware.body({
   culminationDate: { type: 'date', required: false }
 });
 
+// Debug endpoint para verificar la configuración
+router.get('/debug/config', authMiddleware, (req, res) => {
+  res.json({
+    authServiceUrl: config.services.auth.url,
+    environment: config.service.environment,
+    user: req.user
+  });
+});
+
+// Debug endpoint para verificar el token
+router.get('/debug/token', (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+  try {
+    const decoded = jwt.verify(token, config.jwt.secret);
+    res.json({ decoded });
+  } catch (error) {
+    res.status(401).json({ error: error.message });
+  }
+});
+
 // Rutas de proyectos
 router.post('/', 
   authMiddleware, 

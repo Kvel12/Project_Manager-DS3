@@ -3,10 +3,11 @@ const { Project } = require('../models');
 const logger = require('../sidecars/logging/logger');
 const monitor = require('../sidecars/monitoring/monitor');
 const CircuitBreaker = require('../utils/circuitBreaker');
+const config = require('../config');
 
-// Circuit breakers para servicios externos
 const paymentServiceBreaker = new CircuitBreaker({
-  timeout: 3000,
+  name: 'payment-service',
+  timeout: config.services.payment.timeout || 3000,
   errorThreshold: 3,
   resetTimeout: 30000
 });
@@ -33,18 +34,23 @@ class ProjectSaga {
       // Paso 2: Crear intención de pago
       try {
         paymentIntent = await paymentServiceBreaker.execute(async () => {
-          const response = await fetch('http://payment-service:3003/payments/create', {
+          const response = await fetch(`${config.services.payment.url}/payments/create`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': projectData.authToken
+            },
             body: JSON.stringify({
               projectId: project.id,
               amount: projectData.budget,
-              userId: projectData.userId
+              userId: projectData.userId,
+              description: `Payment for project: ${project.title}`
             })
           });
 
           if (!response.ok) {
-            throw new Error('Payment service error');
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'Payment service error');
           }
 
           return response.json();
@@ -53,7 +59,8 @@ class ProjectSaga {
         // Actualizar proyecto con ID de pago
         await project.update({
           paymentStatus: 'processing',
-          status: 'active'
+          status: 'active',
+          paymentIntentId: paymentIntent.id
         });
 
         logger.info(`Payment intent created for project: ${project.id}`);
@@ -66,49 +73,63 @@ class ProjectSaga {
         };
 
       } catch (error) {
-        throw new Error('PAYMENT_CREATION_FAILED');
+        const sagaError = new Error('PAYMENT_CREATION_FAILED');
+        sagaError.originalError = error;
+        throw sagaError;
       }
 
     } catch (error) {
       logger.error(`Project creation saga failed: ${sagaId}`, error);
-      monitor.recordSagaFailure(sagaId);
+      monitor.recordSagaFailure(sagaId, error);
 
       // Ejecutar compensación
       await this.compensate(error, { project, paymentIntent });
 
+      if (error.message === 'PAYMENT_CREATION_FAILED') {
+        throw new Error('Failed to create payment for project');
+      }
       throw new Error('Project creation failed');
     }
   }
 
   async compensate(error, { project, paymentIntent }) {
     logger.info(`Starting compensation for saga: ${project?.id}`);
+    monitor.recordEvent('saga_compensation_start', { projectId: project?.id });
 
     try {
       if (paymentIntent) {
-        // Cancelar intención de pago
         await paymentServiceBreaker.execute(async () => {
-          const response = await fetch(`http://payment-service:3003/payments/${paymentIntent.id}/cancel`, {
-            method: 'POST'
+          const response = await fetch(`${config.services.payment.url}/payments/${paymentIntent.id}/cancel`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
           });
 
           if (!response.ok) {
             logger.error(`Failed to cancel payment intent: ${paymentIntent.id}`);
+            monitor.recordEvent('payment_cancellation_failed', { paymentIntentId: paymentIntent.id });
           }
         });
       }
 
       if (project) {
-        // Marcar proyecto como cancelado
         await project.update({
           status: 'cancelled',
-          paymentStatus: 'failed'
+          paymentStatus: 'failed',
+          metadata: {
+            compensationReason: error.message,
+            compensationTime: new Date()
+          }
         });
       }
 
       logger.info(`Compensation completed for project: ${project?.id}`);
+      monitor.recordEvent('saga_compensation_complete', { projectId: project?.id });
     } catch (compensationError) {
       logger.error('Compensation failed:', compensationError);
-      // Aquí podrías implementar un sistema de alertas para compensaciones fallidas
+      monitor.recordEvent('saga_compensation_failed', { 
+        projectId: project?.id,
+        error: compensationError.message 
+      });
     }
   }
 
@@ -116,6 +137,10 @@ class ProjectSaga {
     const sagaId = `update-project-${projectId}-${Date.now()}`;
     const originalProject = await Project.findByPk(projectId);
     let paymentUpdateIntent = null;
+
+    if (!originalProject) {
+      throw new Error('Project not found');
+    }
 
     try {
       logger.info(`Starting project update saga: ${sagaId}`);
@@ -125,27 +150,37 @@ class ProjectSaga {
       if (updateData.budget && updateData.budget !== originalProject.budget) {
         try {
           paymentUpdateIntent = await paymentServiceBreaker.execute(async () => {
-            const response = await fetch(`http://payment-service:3003/payments/${projectId}/update`, {
+            const response = await fetch(`${config.services.payment.url}/payments/${originalProject.paymentIntentId}/update`, {
               method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': updateData.authToken
+              },
               body: JSON.stringify({
-                amount: updateData.budget
+                amount: updateData.budget,
+                description: `Updated payment for project: ${originalProject.title}`
               })
             });
 
             if (!response.ok) {
-              throw new Error('Payment update failed');
+              const errorData = await response.json().catch(() => ({}));
+              throw new Error(errorData.message || 'Payment update failed');
             }
 
             return response.json();
           });
         } catch (error) {
-          throw new Error('PAYMENT_UPDATE_FAILED');
+          const sagaError = new Error('PAYMENT_UPDATE_FAILED');
+          sagaError.originalError = error;
+          throw sagaError;
         }
       }
 
       // Actualizar proyecto
-      await originalProject.update(updateData);
+      await originalProject.update({
+        ...updateData,
+        updatedAt: new Date()
+      });
 
       logger.info(`Project updated successfully: ${projectId}`);
       monitor.recordSagaSuccess(sagaId);
@@ -158,46 +193,121 @@ class ProjectSaga {
 
     } catch (error) {
       logger.error(`Project update saga failed: ${sagaId}`, error);
-      monitor.recordSagaFailure(sagaId);
+      monitor.recordSagaFailure(sagaId, error);
 
-      // Ejecutar compensación
       await this.compensateUpdate(error, {
         originalProject,
         originalData: originalProject.toJSON(),
         paymentUpdateIntent
       });
 
+      if (error.message === 'PAYMENT_UPDATE_FAILED') {
+        throw new Error('Failed to update payment for project');
+      }
       throw new Error('Project update failed');
     }
   }
 
   async compensateUpdate(error, { originalProject, originalData, paymentUpdateIntent }) {
     logger.info(`Starting update compensation for project: ${originalProject.id}`);
+    monitor.recordEvent('saga_update_compensation_start', { projectId: originalProject.id });
 
     try {
       if (paymentUpdateIntent) {
-        // Revertir actualización de pago
         await paymentServiceBreaker.execute(async () => {
-          const response = await fetch(`http://payment-service:3003/payments/${originalProject.id}/revert`, {
+          const response = await fetch(`${config.services.payment.url}/payments/${originalProject.paymentIntentId}/revert`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              amount: originalData.budget
+              amount: originalData.budget,
+              reason: 'Update compensation'
             })
           });
 
           if (!response.ok) {
-            throw new Error('Payment revert failed');
+            logger.error(`Failed to revert payment update: ${originalProject.paymentIntentId}`);
+            monitor.recordEvent('payment_revert_failed', { paymentIntentId: originalProject.paymentIntentId });
           }
         });
       }
 
-      // Revertir cambios en el proyecto
-      await originalProject.update(originalData);
+      await originalProject.update({
+        ...originalData,
+        metadata: {
+          ...originalData.metadata,
+          lastCompensation: {
+            time: new Date(),
+            reason: error.message
+          }
+        }
+      });
 
       logger.info(`Update compensation completed for project: ${originalProject.id}`);
+      monitor.recordEvent('saga_update_compensation_complete', { projectId: originalProject.id });
     } catch (compensationError) {
       logger.error('Update compensation failed:', compensationError);
+      monitor.recordEvent('saga_update_compensation_failed', {
+        projectId: originalProject.id,
+        error: compensationError.message
+      });
+    }
+  }
+
+  async deleteProject(projectId, userId) {
+    const sagaId = `delete-project-${projectId}-${Date.now()}`;
+    let project = null;
+
+    try {
+      project = await Project.findOne({
+        where: { id: projectId, userId }
+      });
+
+      if (!project) {
+        throw new Error('Project not found');
+      }
+
+      logger.info(`Starting project deletion saga: ${sagaId}`);
+      monitor.recordSagaStart(sagaId);
+
+      // Cancel any active payments first
+      if (project.paymentIntentId) {
+        await paymentServiceBreaker.execute(async () => {
+          const response = await fetch(`${config.services.payment.url}/payments/${project.paymentIntentId}/cancel`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to cancel project payment');
+          }
+        });
+      }
+
+      // Delete the project
+      await project.destroy();
+
+      logger.info(`Project deleted successfully: ${projectId}`);
+      monitor.recordSagaSuccess(sagaId);
+
+      return { success: true };
+
+    } catch (error) {
+      logger.error(`Project deletion saga failed: ${sagaId}`, error);
+      monitor.recordSagaFailure(sagaId, error);
+
+      if (project) {
+        await project.update({
+          status: 'deletion_failed',
+          metadata: {
+            deletionAttempt: {
+              time: new Date(),
+              error: error.message
+            }
+          }
+        });
+      }
+
+      throw new Error('Project deletion failed');
     }
   }
 }
