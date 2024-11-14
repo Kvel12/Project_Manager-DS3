@@ -21,7 +21,7 @@ class AuthSaga {
 
       logger.info(`User created in pending state: ${user.id}`);
 
-      // Paso 2: Validación simulada (aquí podrías agregar validación de email, etc.)
+      // Paso 2: Validación simulada
       await this.simulateValidation(user.id);
 
       // Paso 3: Activar usuario
@@ -35,7 +35,7 @@ class AuthSaga {
           userId: user.id,
           role: user.role
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET || 'your-secret-key',
         { expiresIn: '1h' }
       );
 
@@ -64,7 +64,6 @@ class AuthSaga {
 
     try {
       if (user) {
-        // En lugar de eliminar el usuario, lo marcamos como inactivo
         await user.update({
           status: 'inactive',
           metadata: {
@@ -80,14 +79,14 @@ class AuthSaga {
     } catch (compensationError) {
       logger.error('Compensation failed:', compensationError);
       monitor.recordEvent('saga_compensation_failed');
-      // Aquí podrías implementar un sistema de alertas para compensaciones fallidas
     }
   }
 
   async simulateValidation(userId) {
-    // Simulación de proceso de validación
     await new Promise((resolve) => setTimeout(resolve, 100));
     logger.info(`Validation completed for user: ${userId}`);
     return true;
   }
 }
+
+module.exports = AuthSaga;  // Exportar la clase directamente

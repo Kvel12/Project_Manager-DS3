@@ -1,6 +1,7 @@
 // auth-service/src/models/user.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const logger = require('../sidecars/logging/logger');
 
 const User = sequelize.define('User', {
   username: {
@@ -22,7 +23,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [6, 100] // Para password hasheada
+      len: [6, 100]
     }
   },
   name: {
@@ -62,22 +63,15 @@ const User = sequelize.define('User', {
   lockedUntil: {
     type: DataTypes.DATE,
     allowNull: true
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
   }
 }, {
+  tableName: 'users', // Especificar nombre de tabla en minúsculas
+  timestamps: true,
   hooks: {
     beforeCreate: async (user) => {
       user.status = 'pending';
     },
     afterCreate: async (user) => {
-      const logger = require('../sidecars/logging/logger');
       logger.info(`New user created: ${user.id}`);
     }
   }
@@ -87,7 +81,7 @@ const User = sequelize.define('User', {
 User.prototype.incrementLoginAttempts = async function() {
   this.loginAttempts += 1;
   if (this.loginAttempts >= 5) {
-    this.lockedUntil = new Date(Date.now() + 30 * 60000); // 30 minutos de bloqueo
+    this.lockedUntil = new Date(Date.now() + 30 * 60000); // 30 minutos
   }
   await this.save();
 };

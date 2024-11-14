@@ -1,15 +1,16 @@
 // auth-service/src/config/database.js
 const { Sequelize } = require('sequelize');
+const config = require('./index');
 const logger = require('../sidecars/logging/logger');
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'auth_db',
-  process.env.DB_USER || 'postgres',
-  process.env.DB_PASSWORD || 'postgres',
+  config.database.name,
+  config.database.user,
+  config.database.password,
   {
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 5432,
-    dialect: 'postgres',
+    host: config.database.host,
+    port: config.database.port,
+    dialect: config.database.dialect,
     logging: msg => logger.debug(msg),
     pool: {
       max: 5,
@@ -19,18 +20,5 @@ const sequelize = new Sequelize(
     }
   }
 );
-
-// Probar conexión
-async function testConnection() {
-  try {
-    await sequelize.authenticate();
-    logger.info('Database connection established successfully.');
-  } catch (error) {
-    logger.error('Unable to connect to the database:', error);
-    throw error;
-  }
-}
-
-testConnection();
 
 module.exports = sequelize;

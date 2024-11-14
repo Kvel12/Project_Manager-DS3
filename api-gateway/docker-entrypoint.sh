@@ -1,28 +1,28 @@
 #!/bin/sh
 
-# Esperar por los servicios
-echo "Waiting for Auth Service..."
-while ! wget -q --spider http://auth-service:3001/health; do
-    echo "Auth Service is unavailable - sleeping"
-    sleep 1
-done
+echo "Waiting for services to be ready..."
 
-echo "Waiting for Project Service..."
-while ! wget -q --spider http://project-service:3002/health; do
-    echo "Project Service is unavailable - sleeping"
-    sleep 1
-done
+# Función para verificar servicio
+check_service() {
+    local service=$1
+    local port=$2
+    echo "Checking $service on port $port..."
+    for i in $(seq 1 30); do
+        wget -q --spider http://$service:$port/health && return 0
+        echo "$service is not ready. Attempt $i/30"
+        sleep 2
+    done
+    return 1
+}
 
-echo "Waiting for Payment Service..."
-while ! wget -q --spider http://payment-service:3003/health; do
-    echo "Payment Service is unavailable - sleeping"
-    sleep 1
-done
+# Verificar servicios
+check_service auth-service 3001 || exit 1
+echo "Auth service is ready"
 
-echo "All services are up - starting nginx"
+# Verificar configuración de nginx
+echo "Checking Nginx configuration..."
+nginx -t || exit 1
 
-# Verificar la configuración de nginx
-nginx -t
-
-# Iniciar nginx
+# Iniciar Nginx
+echo "Starting Nginx..."
 exec nginx -g 'daemon off;'

@@ -1,8 +1,7 @@
-// auth-service/src/index.js
 const express = require('express');
 const cors = require('cors');
 const { sequelize } = require('./models');
-const authRoutes = require('./routes/');
+const authRoutes = require('./routes/authRoutes');  // Cambiado para importar directamente authRoutes
 const logger = require('./sidecars/logging/logger');
 const monitor = require('./sidecars/monitoring/monitor');
 
@@ -27,9 +26,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/auth', authRoutes);
+// Rutas de autenticación directamente en la raíz
+app.use('/', authRoutes);
 
-// Health check
+// Health check en la raíz
 app.get('/health', async (req, res) => {
   try {
     await sequelize.authenticate();
@@ -40,11 +40,21 @@ app.get('/health', async (req, res) => {
   }
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  logger.error('Error handling request:', err);
+  res.status(500).json({
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+  });
+});
+
 const PORT = process.env.PORT || 3001;
 
 // Sincronizar base de datos y luego iniciar servidor
-sequelize.sync({ force: true }) // En producción, usar force: false
+sequelize.sync({ force: process.env.NODE_ENV === 'development' })
   .then(() => {
+    logger.info('Database synchronized');
     app.listen(PORT, () => {
       logger.info(`Auth service running on port ${PORT}`);
     });

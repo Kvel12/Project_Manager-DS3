@@ -5,6 +5,8 @@ const { Op } = require('sequelize');
 const { User } = require('../models');
 const logger = require('../sidecars/logging/logger');
 const monitor = require('../sidecars/monitoring/monitor');
+const sagaManager = require('../sagas/sagaManager');
+const config = require('../config');
 
 class AuthController {
   async register(req, res) {
@@ -26,11 +28,13 @@ class AuthController {
         });
       }
 
-      // Iniciar SAGA de registro
-      const saga = new AuthSaga();
-      const result = await saga.executeRegistration({
+      // Hash de la contraseña
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Ejecutar el registro usando la saga
+      const result = await sagaManager.authSaga.executeRegistration({
         username,
-        password: await bcrypt.hash(password, 10),
+        password: hashedPassword,
         name,
         email
       });

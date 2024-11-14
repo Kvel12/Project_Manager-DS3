@@ -11,17 +11,19 @@ services:
       - ./api-gateway/nginx/conf.d:/etc/nginx/conf.d:ro
       - ./api-gateway/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./api-gateway/logs:/var/log/nginx
+    environment:
+      - NODE_ENV=development
+      - AUTH_SERVICE_URL=http://auth-service:3001
+      - PROJECT_SERVICE_URL=http://project-service:3002
+      - PAYMENT_SERVICE_URL=http://payment-service:3003
     depends_on:
-      auth-service:
-        condition: service_healthy
-      project-service:
-        condition: service_healthy
-      payment-service:
-        condition: service_healthy
+      - auth-service
+      - project-service
+      - payment-service
     networks:
       - microservices-net
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -41,24 +43,10 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - JWT_SECRET=your-super-secret-key-change-this-in-production
-      - JWT_EXPIRATION=1h
-      - LOG_LEVEL=info
-      - RATE_LIMIT_WINDOW=15
-      - RATE_LIMIT_MAX_REQUESTS=100
-      - ALLOWED_ORIGINS=http://localhost:3000
-      - SAGA_TIMEOUT=10000
-      - SAGA_RETRIES=3
     depends_on:
-      auth-db:
-        condition: service_healthy
+      - auth-db
     networks:
       - microservices-net
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
     volumes:
       - ./auth-service/logs:/usr/src/app/logs
 
@@ -76,28 +64,12 @@ services:
       - DB_NAME=project_db
       - DB_USER=postgres
       - DB_PASSWORD=postgres
-      - JWT_SECRET=your-super-secret-key-change-this-in-production
-      - JWT_EXPIRATION=1h
-      - LOG_LEVEL=info
-      - RATE_LIMIT_WINDOW=15
-      - RATE_LIMIT_MAX_REQUESTS=100
-      - ALLOWED_ORIGINS=http://localhost:3000
-      - SAGA_TIMEOUT=10000
-      - SAGA_RETRIES=3
+      - JWT_SECRET=your-secret-key
       - AUTH_SERVICE_URL=http://auth-service:3001
     depends_on:
-      project-db:
-        condition: service_healthy
-      auth-service:
-        condition: service_healthy
+      - project-db
     networks:
       - microservices-net
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3002/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
     volumes:
       - ./project-service/logs:/usr/src/app/logs
 
@@ -115,28 +87,12 @@ services:
       - DB_NAME=payment_db
       - DB_USER=postgres
       - DB_PASSWORD=postgres
-      - JWT_SECRET=your-super-secret-key-change-this-in-production
-      - JWT_EXPIRATION=1h
-      - LOG_LEVEL=info
-      - RATE_LIMIT_WINDOW=15
-      - RATE_LIMIT_MAX_REQUESTS=100
-      - ALLOWED_ORIGINS=http://localhost:3000
-      - SAGA_TIMEOUT=10000
-      - SAGA_RETRIES=3
+      - JWT_SECRET=your-secret-key
       - AUTH_SERVICE_URL=http://auth-service:3001
     depends_on:
-      payment-db:
-        condition: service_healthy
-      auth-service:
-        condition: service_healthy
+      - payment-db
     networks:
       - microservices-net
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3003/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
     volumes:
       - ./payment-service/logs:/usr/src/app/logs
 
