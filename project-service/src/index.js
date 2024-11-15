@@ -14,6 +14,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/projects', require('./routes/validationRoutes'));
 
 // Logging middleware
 app.use((req, res, next) => {

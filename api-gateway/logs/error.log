@@ -1,0 +1,595 @@
+2024/11/15 05:48:32 [notice] 1#1: using the "epoll" event method
+2024/11/15 05:48:32 [notice] 1#1: nginx/1.27.2
+2024/11/15 05:48:32 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/11/15 05:48:32 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/11/15 05:48:32 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/15 05:48:32 [notice] 1#1: start worker processes
+2024/11/15 05:48:32 [notice] 1#1: start worker process 16
+2024/11/15 05:48:32 [notice] 1#1: start worker process 17
+2024/11/15 05:48:32 [notice] 1#1: start worker process 18
+2024/11/15 05:48:32 [notice] 1#1: start worker process 19
+2024/11/15 05:48:32 [notice] 1#1: start worker process 20
+2024/11/15 05:48:32 [notice] 1#1: start worker process 21
+2024/11/15 05:48:32 [notice] 1#1: start worker process 22
+2024/11/15 05:48:32 [notice] 1#1: start worker process 23
+2024/11/15 05:48:32 [notice] 1#1: start worker process 24
+2024/11/15 05:48:32 [notice] 1#1: start worker process 25
+2024/11/15 05:48:32 [notice] 1#1: start worker process 26
+2024/11/15 05:48:32 [notice] 1#1: start worker process 27
+2024/11/15 05:48:32 [notice] 1#1: start worker process 28
+2024/11/15 05:48:32 [notice] 1#1: start worker process 29
+2024/11/15 05:48:32 [notice] 1#1: start worker process 30
+2024/11/15 05:48:32 [notice] 1#1: start worker process 31
+2024/11/15 05:48:44 [notice] 16#16: *1 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 192.168.128.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 05:48:44 [notice] 16#16: *1 rewritten data: "/register", args: "", client: 192.168.128.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 05:48:44 [info] 16#16: *1 client 192.168.128.1 closed keepalive connection
+2024/11/15 05:48:51 [notice] 19#19: *3 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 192.168.128.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 05:48:51 [notice] 19#19: *3 rewritten data: "/login", args: "", client: 192.168.128.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 05:48:52 [info] 19#19: *3 client 192.168.128.1 closed keepalive connection
+2024/11/15 05:48:56 [info] 20#20: *5 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:49:26 [info] 18#18: *6 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:49:36 [notice] 17#17: *7 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.128.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 05:49:36 [notice] 17#17: *7 rewritten data: "/", args: "", client: 192.168.128.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 05:49:56 [info] 23#23: *9 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:50:26 [info] 24#24: *10 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:50:36 [error] 17#17: *7 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 192.168.128.1, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://192.168.128.6:3002/", host: "localhost"
+2024/11/15 05:50:36 [info] 17#17: *7 client 192.168.128.1 closed keepalive connection
+2024/11/15 05:50:56 [info] 21#21: *11 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:51:26 [info] 22#22: *12 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:51:57 [info] 26#26: *13 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:52:27 [info] 25#25: *14 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:52:57 [info] 27#27: *15 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:53:27 [info] 28#28: *16 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:53:57 [info] 29#29: *17 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:54:27 [info] 30#30: *18 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:54:57 [info] 31#31: *19 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:55:27 [info] 16#16: *20 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:55:57 [info] 16#16: *21 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:56:28 [info] 16#16: *22 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:56:58 [info] 16#16: *23 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:57:28 [info] 16#16: *24 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:57:58 [info] 16#16: *25 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:58:28 [info] 16#16: *26 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:58:58 [info] 16#16: *27 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:59:28 [info] 16#16: *28 client 127.0.0.1 closed keepalive connection
+2024/11/15 05:59:58 [info] 16#16: *29 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:00:29 [info] 16#16: *30 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:00:59 [info] 16#16: *31 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:01:29 [info] 16#16: *32 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:01:59 [info] 16#16: *33 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:02:29 [info] 16#16: *34 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:02:59 [info] 16#16: *35 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:03:29 [info] 19#19: *36 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:03:59 [info] 19#19: *37 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:04:16 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/11/15 06:04:16 [notice] 16#16: gracefully shutting down
+2024/11/15 06:04:16 [notice] 19#19: gracefully shutting down
+2024/11/15 06:04:16 [notice] 21#21: gracefully shutting down
+2024/11/15 06:04:16 [notice] 17#17: gracefully shutting down
+2024/11/15 06:04:16 [notice] 22#22: gracefully shutting down
+2024/11/15 06:04:16 [notice] 18#18: gracefully shutting down
+2024/11/15 06:04:16 [notice] 25#25: gracefully shutting down
+2024/11/15 06:04:16 [notice] 23#23: gracefully shutting down
+2024/11/15 06:04:16 [notice] 20#20: gracefully shutting down
+2024/11/15 06:04:16 [notice] 24#24: gracefully shutting down
+2024/11/15 06:04:16 [notice] 27#27: gracefully shutting down
+2024/11/15 06:04:16 [notice] 26#26: gracefully shutting down
+2024/11/15 06:04:16 [notice] 28#28: gracefully shutting down
+2024/11/15 06:04:16 [notice] 16#16: exiting
+2024/11/15 06:04:16 [notice] 31#31: gracefully shutting down
+2024/11/15 06:04:16 [notice] 30#30: gracefully shutting down
+2024/11/15 06:04:16 [notice] 29#29: gracefully shutting down
+2024/11/15 06:04:16 [notice] 21#21: exiting
+2024/11/15 06:04:16 [notice] 19#19: exiting
+2024/11/15 06:04:16 [notice] 31#31: exiting
+2024/11/15 06:04:16 [notice] 17#17: exiting
+2024/11/15 06:04:16 [notice] 18#18: exiting
+2024/11/15 06:04:16 [notice] 22#22: exiting
+2024/11/15 06:04:16 [notice] 25#25: exiting
+2024/11/15 06:04:16 [notice] 23#23: exiting
+2024/11/15 06:04:16 [notice] 20#20: exiting
+2024/11/15 06:04:16 [notice] 24#24: exiting
+2024/11/15 06:04:16 [notice] 26#26: exiting
+2024/11/15 06:04:16 [notice] 27#27: exiting
+2024/11/15 06:04:16 [notice] 21#21: exit
+2024/11/15 06:04:16 [notice] 16#16: exit
+2024/11/15 06:04:16 [notice] 28#28: exiting
+2024/11/15 06:04:16 [notice] 19#19: exit
+2024/11/15 06:04:16 [notice] 31#31: exit
+2024/11/15 06:04:16 [notice] 30#30: exiting
+2024/11/15 06:04:16 [notice] 17#17: exit
+2024/11/15 06:04:16 [notice] 29#29: exiting
+2024/11/15 06:04:16 [notice] 18#18: exit
+2024/11/15 06:04:16 [notice] 22#22: exit
+2024/11/15 06:04:16 [notice] 25#25: exit
+2024/11/15 06:04:16 [notice] 23#23: exit
+2024/11/15 06:04:16 [notice] 24#24: exit
+2024/11/15 06:04:16 [notice] 20#20: exit
+2024/11/15 06:04:16 [notice] 26#26: exit
+2024/11/15 06:04:16 [notice] 27#27: exit
+2024/11/15 06:04:16 [notice] 28#28: exit
+2024/11/15 06:04:16 [notice] 30#30: exit
+2024/11/15 06:04:16 [notice] 29#29: exit
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 16
+2024/11/15 06:04:16 [notice] 1#1: worker process 16 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2024/11/15 06:04:16 [notice] 1#1: worker process 25 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 17
+2024/11/15 06:04:16 [notice] 1#1: worker process 17 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 28
+2024/11/15 06:04:16 [notice] 1#1: worker process 20 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 21 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 24 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 28 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2024/11/15 06:04:16 [notice] 1#1: worker process 18 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 19 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 22 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 23 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 26 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 27 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 30 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2024/11/15 06:04:16 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2024/11/15 06:04:16 [notice] 1#1: worker process 29 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: worker process 31 exited with code 0
+2024/11/15 06:04:16 [notice] 1#1: exit
+2024/11/15 06:05:36 [notice] 1#1: using the "epoll" event method
+2024/11/15 06:05:36 [notice] 1#1: nginx/1.27.2
+2024/11/15 06:05:36 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/11/15 06:05:36 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/11/15 06:05:36 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/15 06:05:36 [notice] 1#1: start worker processes
+2024/11/15 06:05:36 [notice] 1#1: start worker process 14
+2024/11/15 06:05:36 [notice] 1#1: start worker process 15
+2024/11/15 06:05:36 [notice] 1#1: start worker process 16
+2024/11/15 06:05:36 [notice] 1#1: start worker process 17
+2024/11/15 06:05:36 [notice] 1#1: start worker process 18
+2024/11/15 06:05:36 [notice] 1#1: start worker process 19
+2024/11/15 06:05:36 [notice] 1#1: start worker process 20
+2024/11/15 06:05:36 [notice] 1#1: start worker process 21
+2024/11/15 06:05:36 [notice] 1#1: start worker process 22
+2024/11/15 06:05:36 [notice] 1#1: start worker process 23
+2024/11/15 06:05:36 [notice] 1#1: start worker process 24
+2024/11/15 06:05:36 [notice] 1#1: start worker process 25
+2024/11/15 06:05:36 [notice] 1#1: start worker process 26
+2024/11/15 06:05:36 [notice] 1#1: start worker process 27
+2024/11/15 06:05:36 [notice] 1#1: start worker process 28
+2024/11/15 06:05:36 [notice] 1#1: start worker process 29
+2024/11/15 06:05:50 [notice] 14#14: *1 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 192.168.144.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:05:50 [notice] 14#14: *1 rewritten data: "/register", args: "", client: 192.168.144.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:05:50 [info] 14#14: *1 client 192.168.144.1 closed keepalive connection
+2024/11/15 06:05:54 [notice] 15#15: *3 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 192.168.144.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:05:54 [notice] 15#15: *3 rewritten data: "/login", args: "", client: 192.168.144.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:05:54 [info] 15#15: *3 client 192.168.144.1 closed keepalive connection
+2024/11/15 06:06:02 [info] 16#16: *5 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:06:22 [notice] 17#17: *6 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.144.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:06:22 [notice] 17#17: *6 rewritten data: "/", args: "", client: 192.168.144.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:06:32 [info] 18#18: *8 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:07:03 [info] 19#19: *9 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:07:22 [error] 17#17: *6 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 192.168.144.1, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://192.168.144.8:3002/", host: "localhost"
+2024/11/15 06:07:22 [info] 17#17: *6 client 192.168.144.1 closed keepalive connection
+2024/11/15 06:07:33 [info] 20#20: *10 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:08:03 [info] 21#21: *11 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:08:33 [info] 22#22: *12 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:09:03 [info] 23#23: *13 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:09:33 [info] 24#24: *14 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:10:03 [info] 25#25: *15 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:10:33 [info] 26#26: *16 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:11:04 [info] 27#27: *17 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:11:34 [info] 28#28: *18 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:12:04 [info] 29#29: *19 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:12:34 [info] 14#14: *20 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:13:04 [info] 14#14: *21 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:13:34 [info] 14#14: *22 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:14:04 [info] 14#14: *23 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:14:34 [info] 14#14: *24 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:15:05 [info] 14#14: *25 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:15:35 [info] 14#14: *26 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:16:05 [info] 14#14: *27 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:16:35 [info] 14#14: *28 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:17:05 [info] 14#14: *29 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:17:35 [info] 14#14: *30 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:18:05 [info] 14#14: *31 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:18:35 [info] 14#14: *32 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:19:06 [info] 14#14: *33 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:19:36 [info] 14#14: *34 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:20:06 [info] 14#14: *35 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:20:36 [info] 15#15: *36 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:21:06 [info] 15#15: *37 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:21:36 [info] 15#15: *38 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:22:06 [info] 15#15: *39 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:22:36 [info] 15#15: *40 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:23:07 [info] 15#15: *41 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:23:37 [info] 15#15: *42 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:24:07 [info] 15#15: *43 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:24:37 [info] 15#15: *44 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:25:07 [info] 15#15: *45 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:25:21 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/11/15 06:25:21 [notice] 14#14: gracefully shutting down
+2024/11/15 06:25:21 [notice] 15#15: gracefully shutting down
+2024/11/15 06:25:21 [notice] 17#17: gracefully shutting down
+2024/11/15 06:25:21 [notice] 16#16: gracefully shutting down
+2024/11/15 06:25:21 [notice] 27#27: gracefully shutting down
+2024/11/15 06:25:21 [notice] 21#21: gracefully shutting down
+2024/11/15 06:25:21 [notice] 15#15: exiting
+2024/11/15 06:25:21 [notice] 25#25: gracefully shutting down
+2024/11/15 06:25:21 [notice] 23#23: gracefully shutting down
+2024/11/15 06:25:21 [notice] 28#28: gracefully shutting down
+2024/11/15 06:25:21 [notice] 29#29: gracefully shutting down
+2024/11/15 06:25:21 [notice] 20#20: gracefully shutting down
+2024/11/15 06:25:21 [notice] 24#24: gracefully shutting down
+2024/11/15 06:25:21 [notice] 18#18: gracefully shutting down
+2024/11/15 06:25:21 [notice] 26#26: gracefully shutting down
+2024/11/15 06:25:21 [notice] 19#19: gracefully shutting down
+2024/11/15 06:25:21 [notice] 22#22: gracefully shutting down
+2024/11/15 06:25:21 [notice] 27#27: exiting
+2024/11/15 06:25:21 [notice] 17#17: exiting
+2024/11/15 06:25:21 [notice] 16#16: exiting
+2024/11/15 06:25:21 [notice] 21#21: exiting
+2024/11/15 06:25:21 [notice] 28#28: exiting
+2024/11/15 06:25:21 [notice] 25#25: exiting
+2024/11/15 06:25:21 [notice] 21#21: exit
+2024/11/15 06:25:21 [notice] 23#23: exiting
+2024/11/15 06:25:21 [notice] 15#15: exit
+2024/11/15 06:25:21 [notice] 29#29: exiting
+2024/11/15 06:25:21 [notice] 18#18: exiting
+2024/11/15 06:25:21 [notice] 24#24: exiting
+2024/11/15 06:25:21 [notice] 14#14: exiting
+2024/11/15 06:25:21 [notice] 27#27: exit
+2024/11/15 06:25:21 [notice] 26#26: exiting
+2024/11/15 06:25:21 [notice] 20#20: exiting
+2024/11/15 06:25:21 [notice] 17#17: exit
+2024/11/15 06:25:21 [notice] 28#28: exit
+2024/11/15 06:25:21 [notice] 22#22: exiting
+2024/11/15 06:25:21 [notice] 25#25: exit
+2024/11/15 06:25:21 [notice] 23#23: exit
+2024/11/15 06:25:21 [notice] 22#22: exit
+2024/11/15 06:25:21 [notice] 19#19: exiting
+2024/11/15 06:25:21 [notice] 16#16: exit
+2024/11/15 06:25:21 [notice] 29#29: exit
+2024/11/15 06:25:21 [notice] 18#18: exit
+2024/11/15 06:25:21 [notice] 24#24: exit
+2024/11/15 06:25:21 [notice] 14#14: exit
+2024/11/15 06:25:21 [notice] 26#26: exit
+2024/11/15 06:25:21 [notice] 20#20: exit
+2024/11/15 06:25:21 [notice] 19#19: exit
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 16
+2024/11/15 06:25:21 [notice] 1#1: worker process 15 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 16 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 21 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 23 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 24 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 26 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 27 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 28 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 29 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2024/11/15 06:25:21 [notice] 1#1: worker process 18 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 19 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2024/11/15 06:25:21 [notice] 1#1: worker process 14 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 17 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 20 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: worker process 22 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2024/11/15 06:25:21 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2024/11/15 06:25:21 [notice] 1#1: worker process 25 exited with code 0
+2024/11/15 06:25:21 [notice] 1#1: exit
+2024/11/15 06:26:36 [notice] 1#1: using the "epoll" event method
+2024/11/15 06:26:36 [notice] 1#1: nginx/1.27.2
+2024/11/15 06:26:36 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/11/15 06:26:36 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/11/15 06:26:36 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/15 06:26:36 [notice] 1#1: start worker processes
+2024/11/15 06:26:36 [notice] 1#1: start worker process 14
+2024/11/15 06:26:36 [notice] 1#1: start worker process 15
+2024/11/15 06:26:36 [notice] 1#1: start worker process 16
+2024/11/15 06:26:36 [notice] 1#1: start worker process 17
+2024/11/15 06:26:36 [notice] 1#1: start worker process 18
+2024/11/15 06:26:36 [notice] 1#1: start worker process 19
+2024/11/15 06:26:36 [notice] 1#1: start worker process 20
+2024/11/15 06:26:36 [notice] 1#1: start worker process 21
+2024/11/15 06:26:36 [notice] 1#1: start worker process 22
+2024/11/15 06:26:36 [notice] 1#1: start worker process 23
+2024/11/15 06:26:36 [notice] 1#1: start worker process 24
+2024/11/15 06:26:36 [notice] 1#1: start worker process 25
+2024/11/15 06:26:36 [notice] 1#1: start worker process 26
+2024/11/15 06:26:36 [notice] 1#1: start worker process 27
+2024/11/15 06:26:36 [notice] 1#1: start worker process 28
+2024/11/15 06:26:36 [notice] 1#1: start worker process 29
+2024/11/15 06:26:52 [notice] 16#16: *1 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 192.168.160.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:26:52 [notice] 16#16: *1 rewritten data: "/register", args: "", client: 192.168.160.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:26:52 [info] 16#16: *1 client 192.168.160.1 closed keepalive connection
+2024/11/15 06:26:56 [notice] 15#15: *3 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 192.168.160.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:26:56 [notice] 15#15: *3 rewritten data: "/login", args: "", client: 192.168.160.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:26:57 [info] 15#15: *3 client 192.168.160.1 closed keepalive connection
+2024/11/15 06:27:01 [info] 14#14: *5 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:27:27 [notice] 17#17: *6 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.160.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:27:27 [notice] 17#17: *6 rewritten data: "/", args: "", client: 192.168.160.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:27:32 [info] 18#18: *8 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:28:02 [info] 19#19: *9 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:28:27 [error] 17#17: *6 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 192.168.160.1, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://192.168.160.6:3002/", host: "localhost"
+2024/11/15 06:28:27 [info] 17#17: *6 client 192.168.160.1 closed keepalive connection
+2024/11/15 06:28:32 [info] 20#20: *10 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:29:02 [info] 21#21: *11 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:29:32 [info] 22#22: *12 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:30:02 [info] 23#23: *13 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:30:32 [info] 24#24: *14 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:31:03 [info] 25#25: *15 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:31:33 [info] 26#26: *16 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:32:03 [info] 27#27: *17 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:32:33 [info] 28#28: *18 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:33:03 [info] 29#29: *19 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:33:33 [info] 16#16: *20 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:34:03 [info] 16#16: *21 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:34:33 [info] 16#16: *22 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:35:04 [info] 16#16: *23 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:35:34 [info] 16#16: *24 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:36:04 [info] 16#16: *25 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:36:34 [info] 16#16: *26 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:37:04 [info] 16#16: *27 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:37:34 [info] 16#16: *28 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:37:56 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/11/15 06:37:56 [notice] 16#16: gracefully shutting down
+2024/11/15 06:37:56 [notice] 17#17: gracefully shutting down
+2024/11/15 06:37:56 [notice] 20#20: gracefully shutting down
+2024/11/15 06:37:56 [notice] 17#17: exiting
+2024/11/15 06:37:56 [notice] 23#23: gracefully shutting down
+2024/11/15 06:37:56 [notice] 21#21: gracefully shutting down
+2024/11/15 06:37:56 [notice] 26#26: gracefully shutting down
+2024/11/15 06:37:56 [notice] 14#14: gracefully shutting down
+2024/11/15 06:37:56 [notice] 28#28: gracefully shutting down
+2024/11/15 06:37:56 [notice] 19#19: gracefully shutting down
+2024/11/15 06:37:56 [notice] 22#22: gracefully shutting down
+2024/11/15 06:37:56 [notice] 29#29: gracefully shutting down
+2024/11/15 06:37:56 [notice] 19#19: exiting
+2024/11/15 06:37:56 [notice] 24#24: gracefully shutting down
+2024/11/15 06:37:56 [notice] 25#25: gracefully shutting down
+2024/11/15 06:37:56 [notice] 18#18: gracefully shutting down
+2024/11/15 06:37:56 [notice] 27#27: gracefully shutting down
+2024/11/15 06:37:56 [notice] 15#15: gracefully shutting down
+2024/11/15 06:37:56 [notice] 16#16: exiting
+2024/11/15 06:37:56 [notice] 20#20: exiting
+2024/11/15 06:37:56 [notice] 16#16: exit
+2024/11/15 06:37:56 [notice] 23#23: exiting
+2024/11/15 06:37:56 [notice] 17#17: exit
+2024/11/15 06:37:56 [notice] 21#21: exiting
+2024/11/15 06:37:56 [notice] 14#14: exiting
+2024/11/15 06:37:56 [notice] 26#26: exiting
+2024/11/15 06:37:56 [notice] 28#28: exiting
+2024/11/15 06:37:56 [notice] 22#22: exiting
+2024/11/15 06:37:56 [notice] 19#19: exit
+2024/11/15 06:37:56 [notice] 29#29: exiting
+2024/11/15 06:37:56 [notice] 24#24: exiting
+2024/11/15 06:37:56 [notice] 25#25: exiting
+2024/11/15 06:37:56 [notice] 18#18: exiting
+2024/11/15 06:37:56 [notice] 27#27: exiting
+2024/11/15 06:37:56 [notice] 15#15: exiting
+2024/11/15 06:37:56 [notice] 20#20: exit
+2024/11/15 06:37:56 [notice] 23#23: exit
+2024/11/15 06:37:56 [notice] 21#21: exit
+2024/11/15 06:37:56 [notice] 14#14: exit
+2024/11/15 06:37:56 [notice] 26#26: exit
+2024/11/15 06:37:56 [notice] 28#28: exit
+2024/11/15 06:37:56 [notice] 22#22: exit
+2024/11/15 06:37:56 [notice] 29#29: exit
+2024/11/15 06:37:56 [notice] 24#24: exit
+2024/11/15 06:37:56 [notice] 25#25: exit
+2024/11/15 06:37:56 [notice] 18#18: exit
+2024/11/15 06:37:56 [notice] 27#27: exit
+2024/11/15 06:37:56 [notice] 15#15: exit
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2024/11/15 06:37:56 [notice] 1#1: worker process 16 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 17 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 20 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 23 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 24 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 29 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 19
+2024/11/15 06:37:56 [notice] 1#1: worker process 14 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 19 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 21 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 26 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2024/11/15 06:37:56 [notice] 1#1: worker process 22 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 28 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 18
+2024/11/15 06:37:56 [notice] 1#1: worker process 18 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2024/11/15 06:37:56 [notice] 1#1: worker process 15 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: worker process 27 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:37:56 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2024/11/15 06:37:56 [notice] 1#1: worker process 25 exited with code 0
+2024/11/15 06:37:56 [notice] 1#1: exit
+2024/11/15 06:39:26 [notice] 1#1: using the "epoll" event method
+2024/11/15 06:39:26 [notice] 1#1: nginx/1.27.2
+2024/11/15 06:39:26 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/11/15 06:39:26 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/11/15 06:39:26 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/11/15 06:39:26 [notice] 1#1: start worker processes
+2024/11/15 06:39:26 [notice] 1#1: start worker process 16
+2024/11/15 06:39:26 [notice] 1#1: start worker process 17
+2024/11/15 06:39:26 [notice] 1#1: start worker process 18
+2024/11/15 06:39:26 [notice] 1#1: start worker process 19
+2024/11/15 06:39:26 [notice] 1#1: start worker process 20
+2024/11/15 06:39:26 [notice] 1#1: start worker process 21
+2024/11/15 06:39:26 [notice] 1#1: start worker process 22
+2024/11/15 06:39:26 [notice] 1#1: start worker process 23
+2024/11/15 06:39:26 [notice] 1#1: start worker process 24
+2024/11/15 06:39:26 [notice] 1#1: start worker process 25
+2024/11/15 06:39:26 [notice] 1#1: start worker process 26
+2024/11/15 06:39:26 [notice] 1#1: start worker process 27
+2024/11/15 06:39:26 [notice] 1#1: start worker process 28
+2024/11/15 06:39:26 [notice] 1#1: start worker process 29
+2024/11/15 06:39:26 [notice] 1#1: start worker process 30
+2024/11/15 06:39:26 [notice] 1#1: start worker process 31
+2024/11/15 06:39:35 [notice] 16#16: *1 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 192.168.176.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:39:35 [notice] 16#16: *1 rewritten data: "/register", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "localhost"
+2024/11/15 06:39:36 [info] 16#16: *1 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:39:42 [notice] 17#17: *3 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 192.168.176.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:39:42 [notice] 17#17: *3 rewritten data: "/login", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "localhost"
+2024/11/15 06:39:42 [info] 17#17: *3 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:39:50 [info] 18#18: *5 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:40:10 [notice] 20#20: *6 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:40:10 [notice] 20#20: *6 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:40:12 [info] 20#20: *6 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:40:20 [info] 21#21: *8 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:40:50 [info] 22#22: *9 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:41:20 [info] 19#19: *10 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:41:50 [info] 23#23: *11 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:42:04 [notice] 25#25: *12 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:42:04 [notice] 25#25: *12 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:42:05 [info] 25#25: *12 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:42:20 [info] 26#26: *14 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:42:50 [info] 24#24: *15 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:43:21 [info] 27#27: *16 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:43:51 [info] 28#28: *17 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:44:21 [info] 29#29: *18 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:44:22 [notice] 30#30: *19 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:44:22 [notice] 30#30: *19 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:44:22 [info] 30#30: *19 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:44:45 [notice] 31#31: *21 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:44:45 [notice] 31#31: *21 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:44:46 [info] 31#31: *21 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:44:51 [info] 16#16: *23 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:45:21 [info] 16#16: *24 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:45:26 [notice] 16#16: *25 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:45:26 [notice] 16#16: *25 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:45:26 [info] 16#16: *25 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:45:45 [notice] 16#16: *27 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:45:45 [notice] 16#16: *27 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:45:51 [info] 16#16: *29 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:46:21 [info] 16#16: *30 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:46:45 [error] 16#16: *27 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://192.168.176.8:3002/", host: "localhost"
+2024/11/15 06:46:45 [info] 16#16: *27 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:46:51 [info] 16#16: *31 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:47:21 [info] 16#16: *32 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:47:52 [info] 16#16: *33 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:48:22 [info] 16#16: *34 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:48:52 [info] 16#16: *35 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:48:57 [notice] 16#16: *36 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:48:57 [notice] 16#16: *36 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:48:58 [info] 16#16: *36 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:00 [notice] 16#16: *38 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:00 [notice] 16#16: *38 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:01 [info] 16#16: *38 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:02 [notice] 16#16: *40 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:02 [notice] 16#16: *40 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:03 [info] 16#16: *40 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:04 [notice] 16#16: *42 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:04 [notice] 16#16: *42 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:05 [info] 16#16: *42 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:06 [notice] 16#16: *44 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:06 [notice] 16#16: *44 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:08 [info] 16#16: *44 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:09 [notice] 17#17: *46 "^/api/projects/?(.*)$" matches "/api/projects", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:09 [notice] 17#17: *46 rewritten data: "/", args: "", client: 192.168.176.1, server: localhost, request: "POST /api/projects HTTP/1.1", host: "localhost"
+2024/11/15 06:49:10 [info] 17#17: *46 client 192.168.176.1 closed keepalive connection
+2024/11/15 06:49:22 [info] 17#17: *48 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:49:52 [info] 17#17: *49 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:50:22 [info] 17#17: *50 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:50:52 [info] 17#17: *51 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:51:22 [info] 17#17: *52 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:51:52 [info] 17#17: *53 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:52:23 [info] 17#17: *54 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:52:53 [info] 17#17: *55 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:53:23 [info] 17#17: *56 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:53:53 [info] 17#17: *57 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:54:23 [info] 17#17: *58 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:54:53 [info] 17#17: *59 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:55:23 [info] 17#17: *60 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:55:53 [info] 17#17: *61 client 127.0.0.1 closed keepalive connection
+2024/11/15 06:56:14 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/11/15 06:56:14 [notice] 16#16: gracefully shutting down
+2024/11/15 06:56:14 [notice] 17#17: gracefully shutting down
+2024/11/15 06:56:14 [notice] 23#23: gracefully shutting down
+2024/11/15 06:56:14 [notice] 18#18: gracefully shutting down
+2024/11/15 06:56:14 [notice] 19#19: gracefully shutting down
+2024/11/15 06:56:14 [notice] 20#20: gracefully shutting down
+2024/11/15 06:56:14 [notice] 31#31: gracefully shutting down
+2024/11/15 06:56:14 [notice] 27#27: gracefully shutting down
+2024/11/15 06:56:14 [notice] 28#28: gracefully shutting down
+2024/11/15 06:56:14 [notice] 30#30: gracefully shutting down
+2024/11/15 06:56:14 [notice] 24#24: gracefully shutting down
+2024/11/15 06:56:14 [notice] 18#18: exiting
+2024/11/15 06:56:14 [notice] 25#25: gracefully shutting down
+2024/11/15 06:56:14 [notice] 21#21: gracefully shutting down
+2024/11/15 06:56:14 [notice] 28#28: exiting
+2024/11/15 06:56:14 [notice] 22#22: gracefully shutting down
+2024/11/15 06:56:14 [notice] 26#26: gracefully shutting down
+2024/11/15 06:56:14 [notice] 29#29: gracefully shutting down
+2024/11/15 06:56:14 [notice] 17#17: exiting
+2024/11/15 06:56:14 [notice] 23#23: exiting
+2024/11/15 06:56:14 [notice] 22#22: exiting
+2024/11/15 06:56:14 [notice] 16#16: exiting
+2024/11/15 06:56:14 [notice] 19#19: exiting
+2024/11/15 06:56:14 [notice] 20#20: exiting
+2024/11/15 06:56:14 [notice] 27#27: exiting
+2024/11/15 06:56:14 [notice] 31#31: exiting
+2024/11/15 06:56:14 [notice] 18#18: exit
+2024/11/15 06:56:14 [notice] 28#28: exit
+2024/11/15 06:56:14 [notice] 30#30: exiting
+2024/11/15 06:56:14 [notice] 24#24: exiting
+2024/11/15 06:56:14 [notice] 25#25: exiting
+2024/11/15 06:56:14 [notice] 24#24: exit
+2024/11/15 06:56:14 [notice] 17#17: exit
+2024/11/15 06:56:14 [notice] 21#21: exiting
+2024/11/15 06:56:14 [notice] 23#23: exit
+2024/11/15 06:56:14 [notice] 22#22: exit
+2024/11/15 06:56:14 [notice] 26#26: exiting
+2024/11/15 06:56:14 [notice] 16#16: exit
+2024/11/15 06:56:14 [notice] 29#29: exiting
+2024/11/15 06:56:14 [notice] 19#19: exit
+2024/11/15 06:56:14 [notice] 20#20: exit
+2024/11/15 06:56:14 [notice] 27#27: exit
+2024/11/15 06:56:14 [notice] 31#31: exit
+2024/11/15 06:56:14 [notice] 30#30: exit
+2024/11/15 06:56:14 [notice] 25#25: exit
+2024/11/15 06:56:14 [notice] 21#21: exit
+2024/11/15 06:56:14 [notice] 26#26: exit
+2024/11/15 06:56:14 [notice] 29#29: exit
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 31
+2024/11/15 06:56:14 [notice] 1#1: worker process 22 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 31 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2024/11/15 06:56:14 [notice] 1#1: worker process 16 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 17 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 18 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 19 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 20 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 21 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 25 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 27 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 28 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 30 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 28
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2024/11/15 06:56:14 [notice] 1#1: worker process 24 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: worker process 26 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 29
+2024/11/15 06:56:14 [notice] 1#1: worker process 29 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: signal 29 (SIGIO) received
+2024/11/15 06:56:14 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2024/11/15 06:56:14 [notice] 1#1: worker process 23 exited with code 0
+2024/11/15 06:56:14 [notice] 1#1: exit

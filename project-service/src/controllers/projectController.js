@@ -7,10 +7,11 @@ const CircuitBreaker = require('../utils/circuitBreaker');
 
 const paymentServiceBreaker = new CircuitBreaker({
   name: 'payment-service',
-  timeout: 3000,
+  timeout: 10000,
   errorThreshold: 3,
   resetTimeout: 30000
 });
+
 
 class ProjectController {
   async createProject(req, res) {
@@ -38,6 +39,33 @@ class ProjectController {
       res.status(500).json({ message: 'Error creating project' });
     } finally {
       monitor.recordResponseTime('createProject', Date.now() - startTime);
+    }
+  }
+
+  async checkPaymentStatus(req, res) {
+    try {
+      const { id } = req.params;
+      const project = await Project.findOne({
+        where: { 
+          id,
+          userId: req.user.id
+        }
+      });
+  
+      if (!project) {
+        return res.status(404).json({ message: 'Project not found' });
+      }
+  
+      res.json({
+        projectId: project.id,
+        status: project.status,
+        paymentStatus: project.paymentStatus,
+        paymentIntentId: project.paymentIntentId
+      });
+  
+    } catch (error) {
+      logger.error('Error checking payment status:', error);
+      res.status(500).json({ message: 'Error checking payment status' });
     }
   }
 

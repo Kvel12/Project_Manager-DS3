@@ -1,0 +1,679 @@
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T05:48:28.459Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T05:48:28.468Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: auth-service","service":"project-service","timestamp":"2024-11-15T05:48:28.684Z"}
+{"environment":"development","level":"info","message":"Database connection established","service":"project-service","timestamp":"2024-11-15T05:48:28.988Z"}
+{"environment":"development","level":"info","message":"Database synchronized","service":"project-service","timestamp":"2024-11-15T05:48:29.612Z"}
+{"environment":"development","level":"info","message":"Project service running on port 3002","service":"project-service","timestamp":"2024-11-15T05:48:29.619Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:48:54.421Z"}
+{"duration":15,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:48:54.436Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:48:54.762Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:48:54.765Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:49:24.509Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:49:24.512Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:49:24.984Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:49:24.986Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T05:49:37.118Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T05:49:37.120Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731649777121","service":"project-service","timestamp":"2024-11-15T05:49:37.121Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731649777121","service":"project-service","timestamp":"2024-11-15T05:49:37.122Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 11","service":"project-service","timestamp":"2024-11-15T05:49:37.189Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/projects/11/validate","service":"project-service","statusCode":404,"timestamp":"2024-11-15T05:49:37.333Z"}
+{"environment":"development","level":"error","message":"Circuit payment-service failure: Project validation failed","service":"project-service","stack":"Error: Project validation failed\n    at /usr/src/app/src/sagas/projectSaga.js:54:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CircuitBreaker.execute (/usr/src/app/src/utils/circuitBreaker.js:37:22)\n    at async ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:36:25)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:24:22)","timestamp":"2024-11-15T05:49:37.360Z"}
+{"environment":"development","level":"error","message":"Project creation saga failed: create-project-1731649777121 PAYMENT_CREATION_FAILED","originalError":{},"service":"project-service","stack":"Error: PAYMENT_CREATION_FAILED\n    at ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:77:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:24:22)","timestamp":"2024-11-15T05:49:37.362Z"}
+{"environment":"development","level":"error","message":"Saga failed: create-project-1731649777121","service":"project-service","timestamp":"2024-11-15T05:49:37.363Z"}
+{"environment":"development","level":"info","message":"Starting compensation for saga: 11","service":"project-service","timestamp":"2024-11-15T05:49:37.364Z"}
+{"environment":"development","level":"info","message":"Compensation completed for project: 11","service":"project-service","timestamp":"2024-11-15T05:49:37.382Z"}
+{"environment":"development","level":"error","message":"Unhandled Rejection at:","service":"project-service","timestamp":"2024-11-15T05:49:37.383Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:49:54.676Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:49:54.680Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:49:55.137Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:49:55.139Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:50:24.788Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:50:24.791Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:50:25.335Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:50:25.337Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:50:54.906Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:50:54.908Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:50:55.496Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:50:55.499Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:51:25.110Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:51:25.114Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:51:25.730Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:51:25.733Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:51:55.212Z"}
+{"duration":6,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:51:55.217Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:51:55.934Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:51:55.936Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:52:25.359Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:52:25.362Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:52:26.127Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:52:26.130Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:52:55.483Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:52:55.486Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:52:56.248Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:52:56.250Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:53:25.677Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:53:25.680Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:53:26.432Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:53:26.437Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:53:55.817Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:53:55.820Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:53:56.559Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:53:56.561Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:54:25.936Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:54:25.938Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:54:26.662Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:54:26.664Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:54:56.069Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:54:56.071Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:54:56.864Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:54:56.866Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:55:26.213Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:55:26.216Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:55:27.034Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:55:27.036Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:55:56.347Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:55:56.351Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:55:57.214Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:55:57.215Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:56:26.498Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:56:26.500Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:56:27.380Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:56:27.382Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:56:56.609Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:56:56.611Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:56:57.504Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:56:57.506Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:57:26.746Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:57:26.748Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:57:27.626Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:57:27.628Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:57:56.938Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:57:56.940Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:57:57.760Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:57:57.761Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:58:27.041Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:58:27.045Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:58:27.915Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:58:27.917Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:58:57.197Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:58:57.199Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:58:58.040Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:58:58.042Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:59:27.337Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:59:27.339Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:59:28.209Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:59:28.211Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:59:57.503Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:59:57.505Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T05:59:58.366Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T05:59:58.367Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:00:27.666Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:00:27.669Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:00:28.508Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:00:28.510Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:00:57.799Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:00:57.801Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:00:58.709Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:00:58.712Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:01:27.998Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:01:28.000Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:01:28.875Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:01:28.877Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:01:58.112Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:01:58.114Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:01:59.090Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:01:59.092Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:02:28.246Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:02:28.248Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:02:29.214Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:02:29.216Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:02:58.415Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:02:58.417Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:02:59.414Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:02:59.415Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:03:28.526Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:03:28.530Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:03:29.567Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:03:29.568Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:03:58.665Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:03:58.667Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:03:59.740Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:03:59.742Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:05:32.715Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:05:32.721Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: auth-service","service":"project-service","timestamp":"2024-11-15T06:05:32.832Z"}
+{"environment":"development","level":"info","message":"Database connection established","service":"project-service","timestamp":"2024-11-15T06:05:32.971Z"}
+{"environment":"development","level":"info","message":"Database synchronized","service":"project-service","timestamp":"2024-11-15T06:05:33.273Z"}
+{"environment":"development","level":"info","message":"Project service running on port 3002","service":"project-service","timestamp":"2024-11-15T06:05:33.280Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:06:01.544Z"}
+{"duration":24,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:06:01.566Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:06:01.578Z"}
+{"duration":6,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:06:01.584Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:06:22.804Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:06:22.806Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731650782807","service":"project-service","timestamp":"2024-11-15T06:06:22.807Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731650782807","service":"project-service","timestamp":"2024-11-15T06:06:22.808Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 12","service":"project-service","timestamp":"2024-11-15T06:06:22.859Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:06:23.048Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 12","service":"project-service","timestamp":"2024-11-15T06:06:23.062Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:06:24.099Z"}
+{"environment":"development","level":"error","message":"Error updating project payment status: invalid input value for enum \"enum_Projects_paymentStatus\": \"paid\"","name":"SequelizeDatabaseError","original":{"code":"22P02","file":"enum.c","length":116,"line":"129","name":"error","parameters":["paid","2024-11-15 06:06:24.104 +00:00",12],"routine":"enum_in","severity":"ERROR","sql":"UPDATE \"Projects\" SET \"paymentStatus\"=$1,\"updatedAt\"=$2 WHERE \"id\" = $3"},"parameters":["paid","2024-11-15 06:06:24.104 +00:00",12],"parent":{"code":"22P02","file":"enum.c","length":116,"line":"129","name":"error","parameters":["paid","2024-11-15 06:06:24.104 +00:00",12],"routine":"enum_in","severity":"ERROR","sql":"UPDATE \"Projects\" SET \"paymentStatus\"=$1,\"updatedAt\"=$2 WHERE \"id\" = $3"},"service":"project-service","sql":"UPDATE \"Projects\" SET \"paymentStatus\"=$1,\"updatedAt\"=$2 WHERE \"id\" = $3","stack":"Error\n    at Query.run (/usr/src/app/node_modules/sequelize/lib/dialects/postgres/query.js:50:25)\n    at /usr/src/app/node_modules/sequelize/lib/sequelize.js:315:28\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async PostgresQueryInterface.update (/usr/src/app/node_modules/sequelize/lib/dialects/abstract/query-interface.js:355:12)\n    at async model.save (/usr/src/app/node_modules/sequelize/lib/model.js:2490:35)\n    at async model.update (/usr/src/app/node_modules/sequelize/lib/model.js:2598:12)\n    at async /usr/src/app/src/routes/validationRoutes.js:87:7","timestamp":"2024-11-15T06:06:24.113Z"}
+{"environment":"development","level":"error","message":"Unhandled Rejection at:","service":"project-service","timestamp":"2024-11-15T06:06:24.115Z"}
+{"environment":"development","level":"error","message":"Circuit payment-service failure: Operation timed out for circuit payment-service","service":"project-service","stack":"Error: Operation timed out for circuit payment-service\n    at Timeout._onTimeout (/usr/src/app/src/utils/circuitBreaker.js:33:18)\n    at listOnTimeout (node:internal/timers:569:17)\n    at process.processTimers (node:internal/timers:512:7)","timestamp":"2024-11-15T06:06:27.862Z"}
+{"environment":"development","level":"error","message":"Project creation saga failed: create-project-1731650782807 PAYMENT_CREATION_FAILED","originalError":{},"service":"project-service","stack":"Error: PAYMENT_CREATION_FAILED\n    at ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:77:27)\n    at runNextTicks (node:internal/process/task_queues:60:5)\n    at process.processTimers (node:internal/timers:509:9)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:24:22)","timestamp":"2024-11-15T06:06:27.863Z"}
+{"environment":"development","level":"error","message":"Saga failed: create-project-1731650782807","service":"project-service","timestamp":"2024-11-15T06:06:27.866Z"}
+{"environment":"development","level":"info","message":"Starting compensation for saga: 12","service":"project-service","timestamp":"2024-11-15T06:06:27.867Z"}
+{"environment":"development","level":"info","message":"Compensation completed for project: 12","service":"project-service","timestamp":"2024-11-15T06:06:27.875Z"}
+{"environment":"development","level":"error","message":"Unhandled Rejection at:","service":"project-service","timestamp":"2024-11-15T06:06:27.876Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:06:31.745Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:06:31.747Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:06:31.790Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:06:31.793Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:07:01.870Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:07:01.873Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:07:01.919Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:07:01.924Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:07:32.047Z"}
+{"duration":12,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:07:32.057Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:07:32.087Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:07:32.089Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:08:02.198Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:08:02.201Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:08:02.243Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:08:02.245Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:08:32.299Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:08:32.302Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:08:32.357Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:08:32.359Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:09:02.468Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:09:02.470Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:09:02.526Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:09:02.528Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:09:32.589Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:09:32.592Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:09:32.657Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:09:32.659Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:10:02.712Z"}
+{"duration":6,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:10:02.718Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:10:02.771Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:10:02.773Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:10:32.831Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:10:32.833Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:10:32.881Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:10:32.883Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:11:02.928Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:11:02.930Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:11:02.974Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:11:02.976Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:11:33.040Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:11:33.042Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:11:33.116Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:11:33.118Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:12:03.136Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:12:03.138Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:12:03.213Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:12:03.215Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:12:33.269Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:12:33.272Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:12:33.316Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:12:33.318Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:13:03.430Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:13:03.432Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:13:03.504Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:13:03.507Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:13:33.549Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:13:33.551Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:13:33.599Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:13:33.601Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:14:03.727Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:14:03.730Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:14:03.778Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:14:03.780Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:14:33.890Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:14:33.893Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:14:33.940Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:14:33.941Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:15:04.019Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:15:04.022Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:15:04.066Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:15:04.068Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:15:34.164Z"}
+{"duration":6,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:15:34.170Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:15:34.214Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:15:34.216Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:16:04.287Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:16:04.289Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:16:04.325Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:16:04.327Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:16:34.400Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:16:34.402Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:16:34.453Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:16:34.455Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:17:04.562Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:17:04.564Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:17:04.608Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:17:04.610Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:17:34.673Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:17:34.675Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:17:34.720Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:17:34.721Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:18:04.839Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:18:04.841Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:18:04.888Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:18:04.889Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:18:35.005Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:18:35.007Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:18:35.041Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:18:35.043Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:19:05.176Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:19:05.180Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:19:05.221Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:19:05.223Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:19:35.432Z"}
+{"duration":19,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:19:35.451Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:19:35.465Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:19:35.467Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:20:05.577Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:20:05.579Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:20:05.655Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:20:05.657Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:20:35.696Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:20:35.699Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:20:35.774Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:20:35.776Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:21:05.846Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:21:05.848Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:21:05.888Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:21:05.889Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:21:35.976Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:21:35.978Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:21:36.053Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:21:36.055Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:22:06.096Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:22:06.098Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:22:06.135Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:22:06.136Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:22:36.236Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:22:36.238Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:22:36.287Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:22:36.288Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:23:06.399Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:23:06.401Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:23:06.443Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:23:06.444Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:23:36.519Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:23:36.521Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:23:36.567Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:23:36.569Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:24:06.682Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:24:06.684Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:24:06.706Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:24:06.707Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:24:36.873Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:24:36.875Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:24:36.889Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:24:36.892Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:25:06.986Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:25:06.990Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:25:07.039Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:25:07.041Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:26:32.109Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:26:32.118Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: auth-service","service":"project-service","timestamp":"2024-11-15T06:26:32.198Z"}
+{"environment":"development","level":"info","message":"Database connection established","service":"project-service","timestamp":"2024-11-15T06:26:32.395Z"}
+{"environment":"development","level":"info","message":"Database synchronized","service":"project-service","timestamp":"2024-11-15T06:26:32.762Z"}
+{"environment":"development","level":"info","message":"Project service running on port 3002","service":"project-service","timestamp":"2024-11-15T06:26:32.773Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:27:01.056Z"}
+{"duration":24,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:27:01.079Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:27:01.186Z"}
+{"duration":7,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:27:01.194Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:27:27.364Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:27:27.377Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731652047378","service":"project-service","timestamp":"2024-11-15T06:27:27.378Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731652047378","service":"project-service","timestamp":"2024-11-15T06:27:27.379Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 13","service":"project-service","timestamp":"2024-11-15T06:27:27.478Z"}
+{"environment":"development","level":"error","message":"Circuit payment-service failure: projectServiceBreaker is not defined","service":"project-service","stack":"Error: projectServiceBreaker is not defined\n    at /usr/src/app/src/sagas/projectSaga.js:54:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CircuitBreaker.execute (/usr/src/app/src/utils/circuitBreaker.js:37:22)\n    at async ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:36:25)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:25:22)","timestamp":"2024-11-15T06:27:27.871Z"}
+{"environment":"development","level":"error","message":"Project creation saga failed: create-project-1731652047378 PAYMENT_CREATION_FAILED","originalError":{},"service":"project-service","stack":"Error: PAYMENT_CREATION_FAILED\n    at ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:77:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:25:22)","timestamp":"2024-11-15T06:27:27.873Z"}
+{"environment":"development","level":"error","message":"Saga failed: create-project-1731652047378","service":"project-service","timestamp":"2024-11-15T06:27:27.875Z"}
+{"environment":"development","level":"info","message":"Starting compensation for saga: 13","service":"project-service","timestamp":"2024-11-15T06:27:27.876Z"}
+{"environment":"development","level":"info","message":"Compensation completed for project: 13","service":"project-service","timestamp":"2024-11-15T06:27:27.938Z"}
+{"environment":"development","level":"error","message":"Unhandled Rejection at:","service":"project-service","timestamp":"2024-11-15T06:27:27.947Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:27:31.207Z"}
+{"duration":8,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:27:31.216Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:27:31.387Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:27:31.390Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:28:01.358Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:28:01.361Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:28:01.515Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:28:01.518Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:28:31.528Z"}
+{"duration":17,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:28:31.543Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:28:31.691Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:28:31.694Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:29:01.707Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:29:01.711Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:29:01.812Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:29:01.815Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:29:31.851Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:29:31.853Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:29:31.907Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:29:31.909Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:30:01.966Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:30:01.969Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:30:02.011Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:30:02.013Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:30:32.119Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:30:32.122Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:30:32.209Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:30:32.212Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:31:02.209Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:31:02.212Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:31:02.316Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:31:02.318Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:31:32.366Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:31:32.369Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:31:32.416Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:31:32.418Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:32:02.523Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:32:02.525Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:32:02.580Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:32:02.584Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:32:32.673Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:32:32.675Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:32:32.719Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:32:32.721Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:33:02.789Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:33:02.790Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:33:02.841Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:33:02.843Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:33:32.899Z"}
+{"duration":11,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:33:32.910Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:33:32.954Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:33:32.956Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:34:03.012Z"}
+{"duration":9,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:34:03.021Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:34:03.068Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:34:03.070Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:34:33.160Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:34:33.164Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:34:33.215Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:34:33.217Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:35:03.284Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:35:03.286Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:35:03.362Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:35:03.364Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:35:33.427Z"}
+{"duration":7,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:35:33.433Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:35:33.480Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:35:33.482Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:36:03.547Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:36:03.549Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:36:03.589Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:36:03.591Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:36:33.690Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:36:33.694Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:36:33.738Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:36:33.740Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:37:03.859Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:37:03.861Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:37:03.907Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:37:03.909Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:37:34.002Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:37:34.005Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:37:34.051Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:37:34.053Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:38:04.117Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:38:04.120Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:38:04.158Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:38:04.159Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:39:21.375Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: payment-service","service":"project-service","timestamp":"2024-11-15T06:39:21.387Z"}
+{"environment":"development","level":"info","message":"Circuit Breaker initialized: auth-service","service":"project-service","timestamp":"2024-11-15T06:39:21.580Z"}
+{"environment":"development","level":"info","message":"Database connection established","service":"project-service","timestamp":"2024-11-15T06:39:21.980Z"}
+{"environment":"development","level":"info","message":"Database synchronized","service":"project-service","timestamp":"2024-11-15T06:39:22.753Z"}
+{"environment":"development","level":"info","message":"Project service running on port 3002","service":"project-service","timestamp":"2024-11-15T06:39:22.760Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:39:48.898Z"}
+{"duration":20,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:39:48.918Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:39:48.958Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:39:48.962Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:40:10.887Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:40:10.888Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731652810889","service":"project-service","timestamp":"2024-11-15T06:40:10.889Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731652810889","service":"project-service","timestamp":"2024-11-15T06:40:10.890Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 14","service":"project-service","timestamp":"2024-11-15T06:40:10.945Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:40:11.099Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 14","service":"project-service","timestamp":"2024-11-15T06:40:11.116Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:40:12.157Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 14","service":"project-service","timestamp":"2024-11-15T06:40:12.169Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 14","service":"project-service","timestamp":"2024-11-15T06:40:12.192Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731652810889","service":"project-service","timestamp":"2024-11-15T06:40:12.193Z"}
+{"duration":1400,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:40:12.196Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:40:19.069Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:40:19.071Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:40:19.120Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:40:19.123Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:40:49.242Z"}
+{"duration":15,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:40:49.254Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:40:49.325Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:40:49.329Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:41:19.312Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:41:19.315Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:41:19.442Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:41:19.444Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:41:49.375Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:41:49.377Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:41:49.611Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:41:49.613Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:42:04.502Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:42:04.503Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731652924503","service":"project-service","timestamp":"2024-11-15T06:42:04.503Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731652924503","service":"project-service","timestamp":"2024-11-15T06:42:04.504Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 15","service":"project-service","timestamp":"2024-11-15T06:42:04.533Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:42:04.596Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 15","service":"project-service","timestamp":"2024-11-15T06:42:04.604Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:42:05.671Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 15","service":"project-service","timestamp":"2024-11-15T06:42:05.681Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 15","service":"project-service","timestamp":"2024-11-15T06:42:05.714Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731652924503","service":"project-service","timestamp":"2024-11-15T06:42:05.716Z"}
+{"duration":1252,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:42:05.722Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:42:19.497Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:42:19.499Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:42:19.771Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:42:19.773Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:42:49.659Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:42:49.661Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:42:49.919Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:42:49.920Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:43:19.775Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:43:19.777Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:43:20.052Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:43:20.054Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:43:49.934Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:43:49.936Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:43:50.190Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:43:50.192Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:44:20.066Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:44:20.068Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:44:20.340Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:44:20.341Z"}
+{"body":"{\n    \"title\": \"Test Project Failure\",\n    \"description\": \"Project for testing SAGA pattern - Failure Case\",\n    \"priority\": \"high\",\n    \"budget\": -1  # Esto causar� un error de validaci�n\n  }","environment":"development","expose":true,"level":"error","message":"Unhandled error: Unexpected token # in JSON at position 151","service":"project-service","stack":"SyntaxError: Unexpected token # in JSON at position 151\n    at JSON.parse (<anonymous>)\n    at parse (/usr/src/app/node_modules/body-parser/lib/types/json.js:92:19)\n    at /usr/src/app/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (/usr/src/app/node_modules/raw-body/index.js:238:16)\n    at done (/usr/src/app/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/usr/src/app/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:517:28)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","status":400,"statusCode":400,"timestamp":"2024-11-15T06:44:22.968Z","type":"entity.parse.failed"}
+{"body":"{\n    \"title\": \"Test Project Failure\",\n    \"description\": \"Project for testing SAGA pattern - Failure Case\",\n    \"priority\": \"high\",\n    \"budget\": -1  # Esto causar� un error de validaci�n\n  }","environment":"development","expose":true,"level":"error","message":"Unhandled error: Unexpected token # in JSON at position 151","service":"project-service","stack":"SyntaxError: Unexpected token # in JSON at position 151\n    at JSON.parse (<anonymous>)\n    at parse (/usr/src/app/node_modules/body-parser/lib/types/json.js:92:19)\n    at /usr/src/app/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (/usr/src/app/node_modules/raw-body/index.js:238:16)\n    at done (/usr/src/app/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/usr/src/app/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:517:28)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","status":400,"statusCode":400,"timestamp":"2024-11-15T06:44:46.006Z","type":"entity.parse.failed"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:44:50.239Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:44:50.242Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:44:50.422Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:44:50.423Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:45:20.378Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:45:20.380Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:45:20.570Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:45:20.572Z"}
+{"body":"{\n    \"title\": \"Test Project Failure\",\n    \"description\": \"Project for testing SAGA pattern - Failure Case\",\n    \"priority\": \"high\",\n    \"budget\": -1  # Esto causar� un error de validaci�n\n  }","environment":"development","expose":true,"level":"error","message":"Unhandled error: Unexpected token # in JSON at position 151","service":"project-service","stack":"SyntaxError: Unexpected token # in JSON at position 151\n    at JSON.parse (<anonymous>)\n    at parse (/usr/src/app/node_modules/body-parser/lib/types/json.js:92:19)\n    at /usr/src/app/node_modules/body-parser/lib/read.js:128:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)\n    at invokeCallback (/usr/src/app/node_modules/raw-body/index.js:238:16)\n    at done (/usr/src/app/node_modules/raw-body/index.js:227:7)\n    at IncomingMessage.onEnd (/usr/src/app/node_modules/raw-body/index.js:287:7)\n    at IncomingMessage.emit (node:events:517:28)\n    at endReadableNT (node:internal/streams/readable:1400:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)","status":400,"statusCode":400,"timestamp":"2024-11-15T06:45:26.262Z","type":"entity.parse.failed"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:45:45.926Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:45:45.927Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653145927","service":"project-service","timestamp":"2024-11-15T06:45:45.927Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653145927","service":"project-service","timestamp":"2024-11-15T06:45:45.927Z"}
+{"environment":"development","errors":[{"instance":{"budget":-1,"createdAt":"2024-11-15T06:45:45.928Z","description":"Project for testing SAGA pattern - Failure Case","id":null,"metadata":{},"paymentStatus":"pending","priority":"high","startDate":"2024-11-15T06:45:45.928Z","status":"draft","title":"Test Project Failure","updatedAt":"2024-11-15T06:45:45.928Z","userId":1},"message":"Validation min on budget failed","origin":"FUNCTION","original":{"validatorArgs":[0],"validatorName":"min"},"path":"budget","type":"Validation error","validatorArgs":[0],"validatorKey":"min","validatorName":"min","value":-1}],"level":"error","message":"Project creation saga failed: create-project-1731653145927 Validation error: Validation min on budget failed","name":"SequelizeValidationError","service":"project-service","stack":"SequelizeValidationError: Validation error: Validation min on budget failed\n    at InstanceValidator._validate (/usr/src/app/node_modules/sequelize/lib/instance-validator.js:50:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async InstanceValidator._validateAndRunHooks (/usr/src/app/node_modules/sequelize/lib/instance-validator.js:60:7)\n    at async InstanceValidator.validate (/usr/src/app/node_modules/sequelize/lib/instance-validator.js:54:12)\n    at async model.save (/usr/src/app/node_modules/sequelize/lib/model.js:2426:7)\n    at async Project.create (/usr/src/app/node_modules/sequelize/lib/model.js:1362:12)\n    at async ProjectSaga.createProject (/usr/src/app/src/sagas/projectSaga.js:26:17)\n    at async createProject (/usr/src/app/src/controllers/projectController.js:25:22)","timestamp":"2024-11-15T06:45:45.932Z"}
+{"environment":"development","level":"error","message":"Saga failed: create-project-1731653145927","service":"project-service","timestamp":"2024-11-15T06:45:45.934Z"}
+{"environment":"development","level":"info","message":"Starting compensation for saga: undefined","service":"project-service","timestamp":"2024-11-15T06:45:45.935Z"}
+{"environment":"development","level":"info","message":"Compensation completed for project: undefined","service":"project-service","timestamp":"2024-11-15T06:45:45.935Z"}
+{"environment":"development","level":"error","message":"Unhandled Rejection at:","service":"project-service","timestamp":"2024-11-15T06:45:45.937Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:45:50.478Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:45:50.483Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:45:50.648Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:45:50.652Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:46:20.615Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:46:20.618Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:46:20.721Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:46:20.722Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:46:50.763Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:46:50.765Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:46:50.809Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:46:50.811Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:47:20.899Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:47:20.902Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:47:20.945Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:47:20.946Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:47:51.027Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:47:51.029Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:47:51.076Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:47:51.078Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:48:21.169Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:48:21.171Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:48:21.219Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:48:21.221Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:48:51.340Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:48:51.343Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:48:51.398Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:48:51.400Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:48:57.815Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:48:57.816Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653337816","service":"project-service","timestamp":"2024-11-15T06:48:57.816Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653337816","service":"project-service","timestamp":"2024-11-15T06:48:57.816Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 16","service":"project-service","timestamp":"2024-11-15T06:48:57.833Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:48:57.879Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 16","service":"project-service","timestamp":"2024-11-15T06:48:57.884Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:48:58.909Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 16","service":"project-service","timestamp":"2024-11-15T06:48:58.920Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 16","service":"project-service","timestamp":"2024-11-15T06:48:58.941Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653337816","service":"project-service","timestamp":"2024-11-15T06:48:58.942Z"}
+{"duration":1140,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:48:58.943Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:00.129Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:49:00.130Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653340130","service":"project-service","timestamp":"2024-11-15T06:49:00.130Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653340130","service":"project-service","timestamp":"2024-11-15T06:49:00.131Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 17","service":"project-service","timestamp":"2024-11-15T06:49:00.141Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:00.183Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 17","service":"project-service","timestamp":"2024-11-15T06:49:00.188Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:01.211Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 17","service":"project-service","timestamp":"2024-11-15T06:49:01.219Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 17","service":"project-service","timestamp":"2024-11-15T06:49:01.238Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653340130","service":"project-service","timestamp":"2024-11-15T06:49:01.238Z"}
+{"duration":1123,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:49:01.240Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:02.441Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:49:02.442Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653342442","service":"project-service","timestamp":"2024-11-15T06:49:02.442Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653342442","service":"project-service","timestamp":"2024-11-15T06:49:02.443Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 18","service":"project-service","timestamp":"2024-11-15T06:49:02.450Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:02.486Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 18","service":"project-service","timestamp":"2024-11-15T06:49:02.490Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:03.511Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 18","service":"project-service","timestamp":"2024-11-15T06:49:03.519Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 18","service":"project-service","timestamp":"2024-11-15T06:49:03.537Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653342442","service":"project-service","timestamp":"2024-11-15T06:49:03.537Z"}
+{"duration":1110,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:49:03.538Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:04.687Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:49:04.688Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653344689","service":"project-service","timestamp":"2024-11-15T06:49:04.690Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653344689","service":"project-service","timestamp":"2024-11-15T06:49:04.691Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 19","service":"project-service","timestamp":"2024-11-15T06:49:04.700Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:04.735Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 19","service":"project-service","timestamp":"2024-11-15T06:49:04.738Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:05.764Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 19","service":"project-service","timestamp":"2024-11-15T06:49:05.772Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 19","service":"project-service","timestamp":"2024-11-15T06:49:05.792Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653344689","service":"project-service","timestamp":"2024-11-15T06:49:05.793Z"}
+{"duration":1118,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:49:05.794Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:06.948Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:49:06.948Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653346949","service":"project-service","timestamp":"2024-11-15T06:49:06.949Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653346949","service":"project-service","timestamp":"2024-11-15T06:49:06.949Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 20","service":"project-service","timestamp":"2024-11-15T06:49:06.956Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:06.992Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 20","service":"project-service","timestamp":"2024-11-15T06:49:06.996Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:08.014Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 20","service":"project-service","timestamp":"2024-11-15T06:49:08.023Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 20","service":"project-service","timestamp":"2024-11-15T06:49:08.042Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653346949","service":"project-service","timestamp":"2024-11-15T06:49:08.043Z"}
+{"duration":1108,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:49:08.045Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:09.205Z"}
+{"environment":"development","level":"info","message":"Creating project for user: 1","service":"project-service","timestamp":"2024-11-15T06:49:09.205Z"}
+{"environment":"development","level":"info","message":"Starting project creation saga: create-project-1731653349206","service":"project-service","timestamp":"2024-11-15T06:49:09.206Z"}
+{"environment":"development","level":"info","message":"Saga started: create-project-1731653349206","service":"project-service","timestamp":"2024-11-15T06:49:09.206Z"}
+{"environment":"development","level":"info","message":"Project created in draft state: 21","service":"project-service","timestamp":"2024-11-15T06:49:09.214Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:09.251Z"}
+{"environment":"development","level":"info","message":"Project validated successfully: 21","service":"project-service","timestamp":"2024-11-15T06:49:09.255Z"}
+{"environment":"development","level":"info","message":"User authenticated: 1","service":"project-service","timestamp":"2024-11-15T06:49:10.278Z"}
+{"environment":"development","level":"info","message":"Project payment status updated: 21","service":"project-service","timestamp":"2024-11-15T06:49:10.287Z"}
+{"environment":"development","level":"info","message":"Payment intent created for project: 21","service":"project-service","timestamp":"2024-11-15T06:49:10.306Z"}
+{"environment":"development","level":"info","message":"Saga completed: create-project-1731653349206","service":"project-service","timestamp":"2024-11-15T06:49:10.306Z"}
+{"duration":1113,"environment":"development","level":"info","message":"Request processed","method":"POST","path":"/","service":"project-service","statusCode":201,"timestamp":"2024-11-15T06:49:10.308Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:49:21.480Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:49:21.484Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:49:21.520Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:49:21.522Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:49:51.590Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:49:51.593Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:49:51.639Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:49:51.641Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:50:21.758Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:50:21.760Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:50:21.807Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:50:21.809Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:50:51.856Z"}
+{"duration":5,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:50:51.861Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:50:51.941Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:50:51.943Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:51:21.967Z"}
+{"duration":6,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:51:21.973Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:51:22.040Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:51:22.041Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:51:52.072Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:51:52.075Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:51:52.126Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:51:52.127Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:52:22.216Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:52:22.218Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:52:22.269Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:52:22.271Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:52:52.346Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:52:52.349Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:52:52.408Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:52:52.410Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:53:22.481Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:53:22.483Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:53:22.525Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:53:22.527Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:53:52.609Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:53:52.611Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:53:52.652Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:53:52.654Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:54:22.716Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:54:22.718Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:54:22.758Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:54:22.759Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:54:52.862Z"}
+{"duration":4,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:54:52.865Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:54:52.912Z"}
+{"duration":1,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:54:52.913Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:55:22.979Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:55:22.980Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:55:23.020Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:55:23.022Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:55:53.128Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:55:53.130Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:55:53.173Z"}
+{"duration":3,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:55:53.175Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:56:23.246Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:56:23.248Z"}
+{"environment":"development","level":"warn","message":"No token provided","service":"project-service","timestamp":"2024-11-15T06:56:23.302Z"}
+{"duration":2,"environment":"development","level":"info","message":"Request processed","method":"GET","path":"/health","service":"project-service","statusCode":401,"timestamp":"2024-11-15T06:56:23.303Z"}

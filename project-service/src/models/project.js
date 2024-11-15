@@ -37,9 +37,13 @@ const Project = sequelize.define('Project', {
     }
   },
   paymentStatus: {
-    type: DataTypes.ENUM('pending', 'processing', 'completed', 'failed'),
+    type: DataTypes.ENUM('pending', 'processing', 'completed', 'failed', 'cancelled'),
     defaultValue: 'pending',
     allowNull: false
+  },
+  paymentIntentId: {
+    type: DataTypes.STRING,
+    allowNull: true
   },
   startDate: {
     type: DataTypes.DATE,
@@ -50,13 +54,10 @@ const Project = sequelize.define('Project', {
     type: DataTypes.DATE,
     allowNull: true
   },
-  createdAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+  metadata: {
+    type: DataTypes.JSONB,
+    allowNull: true,
+    defaultValue: {}
   }
 }, {
   hooks: {
@@ -64,6 +65,7 @@ const Project = sequelize.define('Project', {
       if (!project.startDate) {
         project.startDate = new Date();
       }
+      project.paymentStatus = 'pending';
     }
   }
 });

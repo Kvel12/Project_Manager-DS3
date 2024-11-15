@@ -7,9 +7,9 @@ const config = require('../config');
 
 // Circuit breakers para servicios externos
 const projectServiceBreaker = new CircuitBreaker({
-  name: 'project-service',
-  timeout: config.services.project.timeout || 3000,
-  errorThreshold: config.saga.retries || 3,
+  name: 'payment-service',
+  timeout: 10000, // Aumentado a 10 segundos
+  errorThreshold: 3,
   resetTimeout: 30000
 });
 

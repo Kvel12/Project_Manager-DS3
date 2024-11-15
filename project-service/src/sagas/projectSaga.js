@@ -7,7 +7,7 @@ const config = require('../config');
 
 const paymentServiceBreaker = new CircuitBreaker({
   name: 'payment-service',
-  timeout: config.services.payment.timeout || 3000,
+  timeout: 10000, // Aumentado a 10 segundos
   errorThreshold: 3,
   resetTimeout: 30000
 });
