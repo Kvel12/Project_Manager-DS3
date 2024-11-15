@@ -12,7 +12,14 @@ module.exports = {
     port: process.env.DB_PORT || 5432,
     name: process.env.DB_NAME || 'payment_db',
     user: process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'postgres'
+    password: process.env.DB_PASSWORD || 'postgres',
+    dialect: 'postgres',
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
   },
   services: {
     project: {

@@ -38,7 +38,8 @@ class ProjectSaga {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
-              'Authorization': projectData.authToken
+              'Authorization': projectData.authToken, // Asegúrate que este token se pase
+              'X-Request-Id': sagaId // Añadir para trazabilidad
             },
             body: JSON.stringify({
               projectId: project.id,
@@ -101,9 +102,13 @@ class ProjectSaga {
         await paymentServiceBreaker.execute(async () => {
           const response = await fetch(`${config.services.payment.url}/payments/${paymentIntent.id}/cancel`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': project.authToken, // Añadir el token aquí también
+              'X-Request-Id': `${sagaId}-compensation`
+            }
           });
-
+      
           if (!response.ok) {
             logger.error(`Failed to cancel payment intent: ${paymentIntent.id}`);
             monitor.recordEvent('payment_cancellation_failed', { paymentIntentId: paymentIntent.id });

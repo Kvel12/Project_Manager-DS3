@@ -16,22 +16,21 @@ class ProjectController {
   async createProject(req, res) {
     const startTime = Date.now();
     try {
-      const { title, description, priority, culminationDate, budget } = req.body;
+      const { title, description, priority, budget } = req.body;
       const userId = req.user.id;
-
-      // Use projectSaga directly, not as a constructor
+  
+      logger.info(`Creating project for user: ${userId}`);
+  
       const result = await projectSaga.createProject({
         title,
         description,
         priority,
-        culminationDate,
         budget,
-        userId
+        userId,
+        authToken: req.headers.authorization // Pasar el token original
       });
-
+  
       monitor.recordSuccessfulOperation('createProject');
-      logger.info(`Project created successfully: ${result.project.id}`);
-      
       res.status(201).json(result.project);
     } catch (error) {
       monitor.recordFailedOperation('createProject');

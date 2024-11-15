@@ -34,16 +34,20 @@ const updatePaymentValidation = validationMiddleware.body({
 });
 
 // Rutas públicas
-router.get('/health', monitorRoute('healthCheck'), paymentController.healthCheck);
+router.get('/health', 
+  monitorRoute('healthCheck'),
+  paymentController.healthCheck
+);
 
-// Rutas protegidas
-router.post('/',
+// Ruta para creación de pagos
+router.post('/create',
   authMiddleware,
   createPaymentValidation,
   monitorRoute('createPayment'),
   paymentController.createPayment
 );
 
+// Rutas para consulta de pagos
 router.get('/project/:projectId',
   authMiddleware,
   monitorRoute('getPaymentsByProject'),
@@ -56,12 +60,14 @@ router.get('/:id/status',
   paymentController.getPaymentStatus
 );
 
+// Rutas para manejo de reembolsos
 router.post('/:id/refund',
   authMiddleware,
   monitorRoute('refundPayment'),
   paymentController.refundPayment
 );
 
+// Ruta para actualización de estado
 router.put('/:id/status',
   authMiddleware,
   updatePaymentValidation,
@@ -69,7 +75,7 @@ router.put('/:id/status',
   paymentController.updatePaymentStatus
 );
 
-// Ruta especial para compensación (usada por SAGA)
+// Ruta para compensación (usada por SAGA)
 router.post('/:id/compensate',
   authMiddleware,
   monitorRoute('compensatePayment'),

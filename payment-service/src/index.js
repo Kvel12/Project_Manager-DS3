@@ -1,6 +1,7 @@
 // payment-service/src/index.js
 const express = require('express');
 const cors = require('cors');
+const { sequelize, syncModels } = require('./models');
 const config = require('./config');
 const paymentRoutes = require('./routes/paymentRoutes');
 const logger = require('./sidecars/logging/logger');
@@ -54,19 +55,35 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Iniciar servidor
-const PORT = process.env.PORT || 3003;
-app.listen(PORT, () => {
-  logger.info(`Payment service running on port ${PORT}`);
-});
+// Función de inicio
+async function startServer() {
+  try {
+    // Sincronizar la base de datos
+    logger.info('Synchronizing database...');
+    await sequelize.authenticate();
+    await syncModels();
+    logger.info('Database synchronized successfully');
+
+    // Iniciar servidor
+    const PORT = config.service.port;
+    app.listen(PORT, () => {
+      logger.info(`Payment service running on port ${PORT}`);
+    });
+  } catch (error) {
+    logger.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
 
 // Manejo de errores no capturados
 process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  logger.error('Unhandled Rejection at:', { reason });
 });
 
 process.on('uncaughtException', (error) => {
   logger.error('Uncaught Exception:', error);
-  // Dar tiempo para que los logs se escriban
   setTimeout(() => process.exit(1), 1000);
 });
+
+// Iniciar servidor
+startServer();

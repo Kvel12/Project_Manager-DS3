@@ -2,7 +2,7 @@
 const { Payment, PaymentHistory } = require('../models');
 const logger = require('../sidecars/logging/logger');
 const monitor = require('../sidecars/monitoring/monitor');
-const PaymentSaga = require('../sagas/paymentSaga');
+const paymentSaga = require('../sagas/paymentSaga');  // Nota: cambiado a minúscula
 
 class PaymentController {
   async createPayment(req, res) {
@@ -10,30 +10,34 @@ class PaymentController {
     try {
       const { projectId, amount, userId } = req.body;
       
-      // Iniciar SAGA para procesamiento de pago
-      const saga = new PaymentSaga();
-      const result = await saga.processPayment({
+      logger.info('Creating payment for project', { projectId, amount, userId });
+      
+      // Usar la instancia de paymentSaga directamente, no como constructor
+      const result = await paymentSaga.processPayment({
         projectId,
         amount,
-        userId
+        userId,
+        authToken: req.headers.authorization
       });
 
       monitor.recordSuccessfulOperation('createPayment');
       logger.info(`Payment created successfully: ${result.payment.id}`);
       
-      res.status(201).json(result.payment);
+      res.status(201).json({
+        id: result.payment.id,
+        status: result.payment.status,
+        transactionId: result.payment.transactionId,
+        amount: result.payment.amount
+      });
+
     } catch (error) {
       monitor.recordFailedOperation('createPayment');
       logger.error('Error creating payment:', error);
       
-      if (error.name === 'SagaExecutionFailed') {
-        return res.status(400).json({
-          message: 'Payment processing failed',
-          details: error.compensationResults
-        });
-      }
-      
-      res.status(500).json({ message: 'Error processing payment' });
+      res.status(error.status || 500).json({ 
+        message: error.message || 'Error processing payment',
+        details: error.details
+      });
     } finally {
       monitor.recordResponseTime('createPayment', Date.now() - startTime);
     }
@@ -95,8 +99,10 @@ class PaymentController {
       const { id } = req.params;
       const { reason } = req.body;
 
-      const saga = new PaymentSaga();
-      const result = await saga.processRefund(id, reason);
+      const result = await paymentSaga.processRefund(id, {
+        reason,
+        authToken: req.headers.authorization
+      });
 
       monitor.recordSuccessfulOperation('refundPayment');
       logger.info(`Payment refunded successfully: ${id}`);
@@ -106,14 +112,9 @@ class PaymentController {
       monitor.recordFailedOperation('refundPayment');
       logger.error('Error processing refund:', error);
       
-      if (error.name === 'SagaExecutionFailed') {
-        return res.status(400).json({
-          message: 'Refund processing failed',
-          details: error.compensationResults
-        });
-      }
-      
-      res.status(500).json({ message: 'Error processing refund' });
+      res.status(error.status || 500).json({ 
+        message: error.message || 'Error processing refund'
+      });
     } finally {
       monitor.recordResponseTime('refundPayment', Date.now() - startTime);
     }
@@ -132,7 +133,18 @@ class PaymentController {
 
       const oldStatus = payment.status;
       await payment.update({ status });
-      await payment.addToHistory(oldStatus, reason);
+      
+      // Registrar el cambio en el historial
+      await PaymentHistory.create({
+        paymentId: id,
+        oldStatus,
+        newStatus: status,
+        reason,
+        metadata: {
+          updatedBy: req.user.id,
+          timestamp: new Date()
+        }
+      });
 
       monitor.recordSuccessfulOperation('updatePaymentStatus');
       logger.info(`Payment status updated: ${id} (${oldStatus} -> ${status})`);
@@ -147,36 +159,6 @@ class PaymentController {
     }
   }
 
-  // Endpoint para compensación (usado por SAGA)
-  async compensatePayment(req, res) {
-    try {
-      const { id } = req.params;
-      const { reason } = req.body;
-
-      const payment = await Payment.findByPk(id);
-      if (!payment) {
-        return res.status(404).json({ message: 'Payment not found' });
-      }
-
-      const oldStatus = payment.status;
-      await payment.update({ 
-        status: 'failed',
-        errorDetails: { reason, compensationTime: new Date() }
-      });
-      await payment.addToHistory(oldStatus, 'Compensation: ' + reason);
-
-      monitor.recordSuccessfulOperation('compensatePayment');
-      logger.info(`Payment compensated: ${id}`);
-      
-      res.status(200).json({ message: 'Payment compensated successfully' });
-    } catch (error) {
-      monitor.recordFailedOperation('compensatePayment');
-      logger.error('Error compensating payment:', error);
-      res.status(500).json({ message: 'Error compensating payment' });
-    }
-  }
-
-  // Health check endpoint
   async healthCheck(req, res) {
     try {
       await Payment.findOne();
@@ -184,6 +166,59 @@ class PaymentController {
     } catch (error) {
       logger.error('Health check failed:', error);
       res.status(503).json({ status: 'unhealthy' });
+    }
+  }
+
+  async compensatePayment(req, res) {
+    try {
+      const { id } = req.params;
+      const { reason } = req.body;
+  
+      const payment = await Payment.findByPk(id);
+      if (!payment) {
+        return res.status(404).json({ message: 'Payment not found' });
+      }
+  
+      const oldStatus = payment.status;
+      await payment.update({ 
+        status: 'failed',
+        errorDetails: { 
+          reason, 
+          compensationTime: new Date() 
+        }
+      });
+  
+      // Registrar en el historial
+      await PaymentHistory.create({
+        paymentId: id,
+        oldStatus,
+        newStatus: 'failed',
+        reason: `Compensation: ${reason}`,
+        metadata: {
+          compensationTime: new Date(),
+          originalStatus: oldStatus
+        }
+      });
+  
+      monitor.recordSuccessfulOperation('compensatePayment');
+      logger.info(`Payment compensated: ${id}`, {
+        paymentId: id,
+        oldStatus,
+        reason
+      });
+      
+      res.status(200).json({ 
+        message: 'Payment compensated successfully',
+        payment: {
+          id: payment.id,
+          status: payment.status,
+          oldStatus
+        }
+      });
+    } catch (error) {
+      monitor.recordFailedOperation('compensatePayment');
+      logger.error('Error compensating payment:', error);
+      res.status(500).json({ message: 'Error compensating payment' });
     }
   }
 }
