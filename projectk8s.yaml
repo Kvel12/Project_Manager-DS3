@@ -1,0 +1,570 @@
+# Storage Class y Persistent Volumes
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: auth-db-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/data/auth-db
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node01
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: project-db-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/data/project-db
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node01
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: payment-db-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/data/payment-db
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node01
+---
+# ConfigMaps
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+data:
+  PORT: "80"
+  NODE_ENV: "development"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  AUTH_SERVICE_URL: "http://auth-service:3001"
+  PROJECT_SERVICE_URL: "http://project-service:3002"
+  PAYMENT_SERVICE_URL: "http://payment-service:3003"
+  SUPPORT_SERVICE_URL: "http://support-service:3004"
+  AUTH_SERVICE_TIMEOUT: "5000"
+  PROJECT_SERVICE_TIMEOUT: "5000"
+  PAYMENT_SERVICE_TIMEOUT: "5000"
+  SUPPORT_SERVICE_TIMEOUT: "5000"
+  RATE_LIMIT_WINDOW_MS: "900000"
+  RATE_LIMIT_MAX_REQUESTS: "100"
+  ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:30000"
+  LOG_LEVEL: "info"
+---
+# Auth Service ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-config
+data:
+  PORT: "3001"
+  NODE_ENV: "development"
+  DB_HOST: "auth-db"
+  DB_PORT: "5432"
+  DB_NAME: "auth_db"
+  DB_USER: "postgres"
+  LOG_LEVEL: "info"
+  RATE_LIMIT_WINDOW: "15"
+  RATE_LIMIT_MAX_REQUESTS: "100"
+  ALLOWED_ORIGINS: "http://localhost:30000"
+  SAGA_TIMEOUT: "10000"
+  SAGA_RETRIES: "3"
+  JWT_EXPIRATION: "1h"
+---
+# Project Service ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-service-config
+data:
+  PORT: "3002"
+  NODE_ENV: "development"
+  DB_HOST: "project-db"
+  DB_PORT: "5432"
+  DB_NAME: "project_db"
+  DB_USER: "postgres"
+  AUTH_SERVICE_URL: "http://auth-service:3001"
+  PAYMENT_SERVICE_URL: "http://payment-service:3003"
+  CIRCUIT_BREAKER_TIMEOUT: "3000"
+  CIRCUIT_BREAKER_ERROR_THRESHOLD: "5"
+  CIRCUIT_BREAKER_RESET_TIMEOUT: "30000"
+  JWT_EXPIRATION: "1h"
+---
+# Payment Service ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-service-config
+data:
+  PORT: "3003"
+  NODE_ENV: "development"
+  DB_HOST: "payment-db"
+  DB_PORT: "5432"
+  DB_NAME: "payment_db"
+  DB_USER: "postgres"
+  PROJECT_SERVICE_URL: "http://project-service:3002"
+  AUTH_SERVICE_URL: "http://auth-service:3001"
+  CIRCUIT_BREAKER_TIMEOUT: "3000"
+  CIRCUIT_BREAKER_ERROR_THRESHOLD: "5"
+  CIRCUIT_BREAKER_RESET_TIMEOUT: "30000"
+  SAGA_TIMEOUT: "10000"
+  SAGA_RETRIES: "3"
+  LOG_LEVEL: "info"
+---
+# Secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auth-service-secrets
+type: Opaque
+data:
+  DB_PASSWORD: cG9zdGdyZXM=
+  JWT_SECRET: eW91ci1zdXBlci1zZWNyZXQta2V5LWNoYW5nZS10aGlzLWluLXByb2R1Y3Rpb24=
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: project-service-secrets
+type: Opaque
+data:
+  DB_PASSWORD: cG9zdGdyZXM=
+  JWT_SECRET: eW91ci1zdXBlci1zZWNyZXQta2V5LWNoYW5nZS10aGlzLWluLXByb2R1Y3Rpb24=
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: payment-service-secrets
+type: Opaque
+data:
+  DB_PASSWORD: cG9zdGdyZXM=
+  JWT_SECRET: eW91ci1zdXBlci1zZWNyZXQta2V5LWNoYW5nZS10aGlzLWluLXByb2R1Y3Rpb24=
+---
+# PVCs
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: auth-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: payment-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 1Gi
+---
+# Database StatefulSets
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: auth-db
+spec:
+  serviceName: auth-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-db
+  template:
+    metadata:
+      labels:
+        app: auth-db
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node01
+      containers:
+      - name: postgres
+        image: postgres:13-alpine
+        env:
+        - name: POSTGRES_DB
+          value: auth_db
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: auth-db-pvc
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: project-db
+spec:
+  serviceName: project-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-db
+  template:
+    metadata:
+      labels:
+        app: project-db
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node01
+      containers:
+      - name: postgres
+        image: postgres:13-alpine
+        env:
+        - name: POSTGRES_DB
+          value: project_db
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: project-db-pvc
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: payment-db
+spec:
+  serviceName: payment-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-db
+  template:
+    metadata:
+      labels:
+        app: payment-db
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node01
+      containers:
+      - name: postgres
+        image: postgres:13-alpine
+        env:
+        - name: POSTGRES_DB
+          value: payment_db
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: payment-db-pvc
+---
+# Service Deployments
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      initContainers:
+      - name: wait-for-services
+        image: busybox
+        command: ['sh', '-c', 'until nc -z auth-service 3001 && nc -z project-service 3002 && nc -z payment-service 3003; do echo waiting for services; sleep 2; done;']
+      containers:
+      - name: api-gateway
+        image: ghcr.io/kvel12/api-gateway:latest
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: api-gateway-config
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      initContainers:
+      - name: wait-for-db
+        image: postgres:13-alpine
+        command: ['sh', '-c', 'until pg_isready -h auth-db -p 5432; do echo waiting for database; sleep 2; done;']
+      containers:
+      - name: auth-service
+        image: ghcr.io/kvel12/auth-service:latest
+        ports:
+        - containerPort: 3001
+        envFrom:
+        - configMapRef:
+            name: auth-service-config
+        - secretRef:
+            name: auth-service-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-service
+  template:
+    metadata:
+      labels:
+        app: project-service
+    spec:
+      initContainers:
+      - name: wait-for-db
+        image: postgres:13-alpine
+        command: ['sh', '-c', 'until pg_isready -h project-db -p 5432; do echo waiting for database; sleep 2; done;']
+      containers:
+      - name: project-service
+        image: ghcr.io/kvel12/project-service:latest
+        ports:
+        - containerPort: 3002
+        envFrom:
+        - configMapRef:
+            name: project-service-config
+        - secretRef:
+            name: project-service-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      initContainers:
+      - name: wait-for-db
+        image: postgres:13-alpine
+        command: ['sh', '-c', 'until pg_isready -h payment-db -p 5432; do echo waiting for database; sleep 2; done;']
+      containers:
+      - name: payment-service
+        image: ghcr.io/kvel12/payment-service:latest
+        ports:
+        - containerPort: 3003
+        envFrom:
+        - configMapRef:
+            name: payment-service-config
+        - secretRef:
+            name: payment-service-secrets
+---
+# Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+spec:
+  type: NodePort
+  selector:
+    app: api-gateway
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth-service
+  ports:
+  - port: 3001
+    targetPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-service
+spec:
+  selector:
+    app: project-service
+  ports:
+  - port: 3002
+    targetPort: 3002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+spec:
+  selector:
+    app: payment-service
+  ports:
+  - port: 3003
+    targetPort: 3003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-db
+spec:
+  selector:
+    app: auth-db
+  ports:
+  - port: 5432
+    targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-db
+spec:
+  selector:
+    app: project-db
+  ports:
+  - port: 5432
+    targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-db
+spec:
+  selector:
+    app: payment-db
+  ports:
+  - port: 5432
+    targetPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+spec:
+  selector:
+    app: redis
+  ports:
+  - port: 6379
+    targetPort: 6379
+---
+# Redis Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:alpine
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
