@@ -23,7 +23,8 @@ const projectValidation = validationMiddleware.body({
   description: { type: 'string', required: false },
   priority: { type: 'string', enum: ['low', 'medium', 'high'] },
   budget: { type: 'number', required: true, min: 0 },
-  culminationDate: { type: 'date', required: false }
+  culminationDate: { type: 'date', required: false },
+  teamId: {type: 'number', require: true}
 });
 
 // Debug endpoint para verificar la configuración

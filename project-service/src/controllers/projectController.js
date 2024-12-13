@@ -17,8 +17,12 @@ class ProjectController {
   async createProject(req, res) {
     const startTime = Date.now();
     try {
-      const { title, description, priority, budget } = req.body;
+      const { title, description, priority, budget, teamId } = req.body;
       const userId = req.user.id;
+
+      if(req.user.role !== 'admin'){
+        return res.status(403).json({messagge: 'Only admins can create projects'})
+      }
   
       logger.info(`Creating project for user: ${userId}`);
   
@@ -27,6 +31,7 @@ class ProjectController {
         description,
         priority,
         budget,
+        teamId,
         userId,
         authToken: req.headers.authorization // Pasar el token original
       });
@@ -71,19 +76,25 @@ class ProjectController {
 
   async getAllProjects(req, res) {
     try {
-      const userId = req.user.id;
-      const projects = await Project.findAll({
-        where: { userId },
-        include: [{
-          model: Task,
-          as: 'tasks'
-        }]
-      });
-
-      monitor.recordSuccessfulOperation('getAllProjects');
+      let projects;
+      if (req.user.role === 'admin') {
+        projects = await Project.findAll({
+          include: [{ model: Task, as: 'tasks' }]
+        });
+      } else if (req.user.role === 'developer') {
+        projects = await Project.findAll({
+          include: [{
+            model: Task,
+            as: 'tasks',
+            where: { assignedTo: req.user.id }
+          }]
+        });
+      } else {
+        return res.status(403).json({ message: 'Access denied' });
+      }
+  
       res.status(200).json(projects);
     } catch (error) {
-      monitor.recordFailedOperation('getAllProjects');
       logger.error('Error getting projects:', error);
       res.status(500).json({ message: 'Error getting projects' });
     }
@@ -116,6 +127,9 @@ class ProjectController {
   }
 
   async updateProject(req, res) {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Only admins can update/delete projects' });
+    }    
     const startTime = Date.now();
     try {
       const { id } = req.params;
@@ -149,6 +163,9 @@ class ProjectController {
   }
 
   async deleteProject(req, res) {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Only admins can update/delete projects' });
+    }    
     const startTime = Date.now();
     try {
       const { id } = req.params;

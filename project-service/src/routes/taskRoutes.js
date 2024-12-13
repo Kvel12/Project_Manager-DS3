@@ -14,7 +14,8 @@ const taskValidation = validationMiddleware.body({
   priority: { type: 'string', enum: ['low', 'medium', 'high'] },
   status: { type: 'string', enum: ['pending', 'in_progress', 'completed', 'cancelled'] },
   completionDate: { type: 'date', required: false },
-  projectId: { type: 'number', required: true }
+  projectId: { type: 'number', required: true },
+  assignedTo: {type: 'number', required: true}
 });
 
 const monitorRoute = (routeName) => (req, res, next) => {

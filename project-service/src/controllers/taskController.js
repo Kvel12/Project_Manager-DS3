@@ -7,8 +7,8 @@ class TaskController {
   async createTask(req, res) {
     const startTime = Date.now();
     try {
-      const { projectId, title, description, priority, completionDate } = req.body;
-      const userId = req.user.id;
+      const { projectId, title, description, priority, completionDate, assignedTo } = req.body;
+      const userId = req.user.id
 
       // Verificar si el proyecto existe y pertenece al usuario
       const project = await Project.findOne({
@@ -24,7 +24,8 @@ class TaskController {
         title,
         description,
         priority,
-        completionDate
+        completionDate,
+        assignedTo
       });
 
       monitor.recordSuccessfulOperation('createTask');

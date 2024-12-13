@@ -40,6 +40,11 @@ const registrationSchema = {
     type: 'string', 
     required: true, 
     email: true 
+  },
+  role: {
+    type: 'string',
+    enum: ['admin', 'user', 'developer'],
+    required: false
   }
 };
 
@@ -56,6 +61,13 @@ const loginSchema = {
 
 // Rutas públicas
 router.post('/register',
+  authMiddleware,
+  (req, res, next) => {
+    if(req.body.role && req.body.role !== 'user' && req.user.role !== 'admin'){
+      return res.status(403).json({message: 'Only administrators can assing roles other than "user"'});
+    }
+    next();
+  },
   validationMiddleware.validateBody(registrationSchema),
   monitorRoute('register'),
   authController.register
@@ -85,6 +97,19 @@ router.get('/health',
   monitorRoute('healthCheck'),
   authController.healthCheck
 );
+
+//Listar Usuarios
+router.get('/users',
+  authMiddleware,
+  (req, res, next) => {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+    next();
+  },
+  authController.getAllUsers
+);
+
 
 // Métricas (protegida y solo para admins)
 router.get('/metrics',

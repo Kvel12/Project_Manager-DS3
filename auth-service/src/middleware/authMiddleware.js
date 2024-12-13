@@ -20,7 +20,10 @@ async function authMiddleware(req, res, next) {
         throw new Error('Invalid token');
       }
 
-      req.user = decoded;
+      req.user = {
+        userId: decoded.userId,
+        role: user.role
+      };
       next();
     } catch (error) {
       logger.error('Token validation error:', error);

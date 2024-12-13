@@ -58,6 +58,10 @@ const Project = sequelize.define('Project', {
     type: DataTypes.JSONB,
     allowNull: true,
     defaultValue: {}
+  },
+  teamId:{
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, {
   hooks: {

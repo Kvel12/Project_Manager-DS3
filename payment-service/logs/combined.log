@@ -1651,3 +1651,10 @@
 {"level":"info","message":"Request processed","metadata":{"duration":11,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-11-17 03:59:20"}
 {"level":"info","message":"Request processed","metadata":{"duration":13,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-11-17 03:59:50"}
 {"level":"info","message":"Request processed","metadata":{"duration":15,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-11-17 04:00:20"}
+{"level":"info","message":"Synchronizing database...","metadata":{"environment":"development","service":"payment-service"},"timestamp":"2024-12-13 02:55:20"}
+{"level":"info","message":"Database models synchronized successfully","metadata":{"environment":"development","service":"payment-service"},"timestamp":"2024-12-13 02:55:20"}
+{"level":"info","message":"Database synchronized successfully","metadata":{"environment":"development","service":"payment-service"},"timestamp":"2024-12-13 02:55:20"}
+{"level":"info","message":"Payment service running on port 3003","metadata":{"environment":"development","service":"payment-service"},"timestamp":"2024-12-13 02:55:20"}
+{"level":"info","message":"Request processed","metadata":{"duration":3282,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-12-13 02:55:49"}
+{"level":"info","message":"Request processed","metadata":{"duration":5069,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-12-13 02:56:22"}
+{"level":"info","message":"Request processed","metadata":{"duration":5101,"environment":"development","method":"GET","path":"/health","service":"payment-service","statusCode":503},"timestamp":"2024-12-13 02:56:52"}

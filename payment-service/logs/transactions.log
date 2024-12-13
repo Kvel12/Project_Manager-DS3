@@ -1652,3 +1652,10 @@
 2024-11-17 03:59:20 [info]: Request processed
 2024-11-17 03:59:50 [info]: Request processed
 2024-11-17 04:00:20 [info]: Request processed
+2024-12-13 02:55:20 [info]: Synchronizing database...
+2024-12-13 02:55:20 [info]: Database models synchronized successfully
+2024-12-13 02:55:20 [info]: Database synchronized successfully
+2024-12-13 02:55:20 [info]: Payment service running on port 3003
+2024-12-13 02:55:49 [info]: Request processed
+2024-12-13 02:56:22 [info]: Request processed
+2024-12-13 02:56:52 [info]: Request processed

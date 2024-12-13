@@ -12,12 +12,12 @@ class AuthController {
   async register(req, res) {
     const startTime = Date.now();
     try {
-      const { username, password, name, email } = req.body;
+      const { username, password, name, email, role } = req.body;
 
       // Verificar si el usuario ya existe
       const existingUser = await User.findOne({ 
         where: { 
-          [Op.or]: [{ username }, { email }] 
+          [Op.or]: [{ username }, { email }, {role}] 
         } 
       });
 
@@ -28,6 +28,10 @@ class AuthController {
         });
       }
 
+      if(req.user && req.user.role !== 'admin' && role && role !== 'user'){
+        return res.status(403).json({message: 'Only administrators can assing roles other than "user"'})
+      }
+
       // Hash de la contraseña
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -36,7 +40,8 @@ class AuthController {
         username,
         password: hashedPassword,
         name,
-        email
+        email,
+        role: role || 'user'
       });
 
       monitor.recordSuccessfulOperation('register');
@@ -189,6 +194,20 @@ class AuthController {
     } catch (error) {
       logger.error('Health check failed:', error);
       res.status(503).json({ status: 'unhealthy' });
+    }
+  }
+
+  async getAllUser(req, res){
+    try{
+      if(req.user.role !== 'Admin'){
+        return res.status(403).json({mesaage: 'Access denied'});
+      }
+      const users = await User.findAll({
+        attributes: {exclude: ['password']}
+      });
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(500).json({message: 'Error fetching users'});
     }
   }
 }
