@@ -1,6 +1,27 @@
 version: '3.8'
 
 services:
+  test-service:
+    build:
+      context: ./test-service
+      dockerfile: Dockerfile
+    environment:
+      - API_GATEWAY_URL=http://api-gateway
+      - AUTH_SERVICE_URL=http://auth-service:3001
+      - PROJECT_SERVICE_URL=http://project-service:3002
+      - PAYMENT_SERVICE_URL=http://payment-service:3003
+    networks:
+      - microservices-net
+    depends_on:
+      api-gateway:
+        condition: service_started
+      auth-service:
+        condition: service_started
+      project-service:
+        condition: service_started
+      payment-service:
+        condition: service_started
+        
   logging-service:
     build:
       context: ./logging-service

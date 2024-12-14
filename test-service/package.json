@@ -1,0 +1,20 @@
+{
+    "name": "test-service",
+    "version": "1.0.0",
+    "description": "Testing service for microservices architecture",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest --detectOpenHandles --forceExit",
+      "test:watch": "jest --watch",
+      "test:coverage": "jest --coverage"
+    },
+    "dependencies": {
+      "axios": "^1.6.2",
+      "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+      "jest": "^29.7.0",
+      "@types/jest": "^29.5.11",
+      "supertest": "^6.3.3"
+    }
+  }
