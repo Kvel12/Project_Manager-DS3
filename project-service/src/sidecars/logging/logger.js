@@ -1,77 +1,122 @@
-// project-service/src/sidecars/logging/logger.js
 const winston = require('winston');
+const FluentLogger = require('fluent-logger');
 const path = require('path');
 
-const logger = winston.createLogger({
+const fluentConfig = {
+  host: process.env.FLUENTD_HOST || 'logging-service',
+  port: Number(process.env.FLUENTD_PORT) || 24224,
+  timeout: 3.0,
+  reconnectInterval: 1000,
+  requireAckResponse: false
+};
+
+const customFormat = winston.format.combine(
+  winston.format.timestamp({
+    format: 'YYYY-MM-DD HH:mm:ss.SSS'
+  }),
+  winston.format.errors({ stack: true }),
+  winston.format.json()
+);
+
+const winstonLogger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.errors({ stack: true }),
-    winston.format.json()
-  ),
-  defaultMeta: { 
+  format: customFormat,
+  defaultMeta: {
     service: 'project-service',
-    environment: process.env.NODE_ENV 
+    environment: process.env.NODE_ENV
   },
   transports: [
-    // Log de errores
-    new winston.transports.File({ 
-      filename: path.join(__dirname, '../../../logs/error.log'),
-      level: 'error',
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-    }),
-    // Logs generales
-    new winston.transports.File({ 
-      filename: path.join(__dirname, '../../../logs/combined.log'),
-      maxsize: 5242880,
-      maxFiles: 5,
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple()
+      )
     })
   ]
 });
 
-// Logs a consola en desarrollo
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.simple(),
-      winston.format.printf(({ timestamp, level, message, ...metadata }) => {
-        let msg = `${timestamp} [${level}]: ${message}`;
-        if (Object.keys(metadata).length > 0) {
-          msg += ` ${JSON.stringify(metadata)}`;
-        }
-        return msg;
-      })
-    )
-  }));
+let fluentLogger;
+try {
+  fluentLogger = FluentLogger.createFluentSender('project-service', fluentConfig);
+  
+  fluentLogger.on('connect', () => {
+    winstonLogger.info('Connected to Fluentd');
+  });
+  
+  fluentLogger.on('error', (error) => {
+    winstonLogger.error('Fluentd error:', error);
+  });
+} catch (error) {
+  winstonLogger.error('Error initializing Fluentd:', error);
 }
 
-// Métodos personalizados para logging específico
-logger.sagaStart = (sagaId, details) => {
-  logger.info(`Saga started: ${sagaId}`, { 
-    type: 'SAGA_START',
-    sagaId,
-    ...details
-  });
+const createLogFunction = (level) => (message, meta = {}) => {
+  winstonLogger[level](message, meta);
+  
+  if (fluentLogger) {
+    const logData = {
+      message: typeof message === 'string' ? message : JSON.stringify(message),
+      level,
+      timestamp: new Date().toISOString(),
+      ...meta
+    };
+    
+    fluentLogger.emit(level, logData, (err) => {
+      if (err) {
+        winstonLogger.error('Error sending log to Fluentd:', err);
+      }
+    });
+  }
 };
 
-logger.sagaEnd = (sagaId, status, details) => {
-  logger.info(`Saga completed: ${sagaId}`, {
-    type: 'SAGA_END',
-    sagaId,
-    status,
-    ...details
-  });
-};
+const logger = {
+  error: createLogFunction('error'),
+  warn: createLogFunction('warn'),
+  info: createLogFunction('info'),
+  debug: createLogFunction('debug'),
+  
+  // Funciones específicas de project
+  project: {
+    created: (projectId, userId) => {
+      logger.info('New project created', {
+        projectId,
+        userId,
+        event: 'project_created'
+      });
+    },
+    
+    updated: (projectId, userId) => {
+      logger.info('Project updated', {
+        projectId,
+        userId,
+        event: 'project_updated'
+      });
+    },
+    
+    deleted: (projectId, userId) => {
+      logger.info('Project deleted', {
+        projectId,
+        userId,
+        event: 'project_deleted'
+      });
+    },
 
-logger.compensation = (sagaId, step, details) => {
-  logger.warn(`Executing compensation: ${sagaId}`, {
-    type: 'COMPENSATION',
-    sagaId,
-    step,
-    ...details
-  });
+    taskAdded: (projectId, taskId) => {
+      logger.info('Task added to project', {
+        projectId,
+        taskId,
+        event: 'task_added'
+      });
+    },
+
+    taskCompleted: (projectId, taskId) => {
+      logger.info('Task completed', {
+        projectId,
+        taskId,
+        event: 'task_completed'
+      });
+    }
+  }
 };
 
 module.exports = logger;

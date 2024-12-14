@@ -1,6 +1,35 @@
 version: '3.8'
 
 services:
+  logging-service:
+    build:
+      context: ./logging-service
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3005"
+      - "24224:24224/tcp"
+      - "24224:24224/udp"
+    volumes:
+      - ./logging-service/logs:/fluentd/log
+    networks:
+      - microservices-net
+    environment:
+      - NODE_ENV=development
+      - PORT=3005
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: >
+      sh -c "
+        mkdir -p /fluentd/log && 
+        chmod -R 777 /fluentd/log && 
+        fluentd -c /fluentd/etc/fluent.conf & 
+        node src/index.js"
+    restart: unless-stopped
+
   api-gateway:
     build:
       context: ./api-gateway
@@ -16,10 +45,17 @@ services:
       - AUTH_SERVICE_URL=http://auth-service:3001
       - PROJECT_SERVICE_URL=http://project-service:3002
       - PAYMENT_SERVICE_URL=http://payment-service:3003
+      - FLUENTD_HOST=logging-service
+      - FLUENTD_PORT=24224
     depends_on:
-      - auth-service
-      - project-service
-      - payment-service
+      logging-service:
+        condition: service_healthy
+      auth-service:
+        condition: service_started
+      project-service:
+        condition: service_started
+      payment-service:
+        condition: service_started
     networks:
       - microservices-net
     healthcheck:
@@ -43,12 +79,18 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - JWT_SECRET=your-super-secret-key-change-this-in-production
+      - FLUENTD_HOST=logging-service
+      - FLUENTD_PORT=24224
     depends_on:
-      - auth-db
+      logging-service:
+        condition: service_healthy
+      auth-db:
+        condition: service_healthy
     networks:
       - microservices-net
     volumes:
       - ./auth-service/logs:/usr/src/app/logs
+    restart: unless-stopped
 
   project-service:
     build:
@@ -66,12 +108,18 @@ services:
       - DB_PASSWORD=postgres
       - JWT_SECRET=your-secret-key
       - AUTH_SERVICE_URL=http://auth-service:3001
+      - FLUENTD_HOST=logging-service
+      - FLUENTD_PORT=24224
     depends_on:
-      - project-db
+      logging-service:
+        condition: service_healthy
+      project-db:
+        condition: service_healthy
     networks:
       - microservices-net
     volumes:
       - ./project-service/logs:/usr/src/app/logs
+    restart: unless-stopped
 
   payment-service:
     build:
@@ -89,12 +137,18 @@ services:
       - DB_PASSWORD=postgres
       - JWT_SECRET=your-secret-key
       - AUTH_SERVICE_URL=http://auth-service:3001
+      - FLUENTD_HOST=logging-service
+      - FLUENTD_PORT=24224
     depends_on:
-      - payment-db
+      logging-service:
+        condition: service_healthy
+      payment-db:
+        condition: service_healthy
     networks:
       - microservices-net
     volumes:
       - ./payment-service/logs:/usr/src/app/logs
+    restart: unless-stopped
 
   auth-db:
     image: postgres:13-alpine

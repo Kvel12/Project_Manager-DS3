@@ -1,20 +1,27 @@
-// auth-service/src/sidecars/logging/logger.js
 const winston = require('winston');
+const FluentLogger = require('fluent-logger');
 const path = require('path');
 
-// Formato personalizado para los logs
+// Configuración de Fluentd
+const fluentConfig = {
+  host: process.env.FLUENTD_HOST || 'logging-service',
+  port: Number(process.env.FLUENTD_PORT) || 24224,
+  timeout: 3.0,
+  reconnectInterval: 1000,
+  requireAckResponse: false
+};
+
+// Crear el formato personalizado para Winston
 const customFormat = winston.format.combine(
   winston.format.timestamp({
-    format: 'YYYY-MM-DD HH:mm:ss'
+    format: 'YYYY-MM-DD HH:mm:ss.SSS'
   }),
   winston.format.errors({ stack: true }),
-  winston.format.metadata({
-    fillExcept: ['message', 'level', 'timestamp', 'label']
-  }),
   winston.format.json()
 );
 
-const logger = winston.createLogger({
+// Crear el logger de Winston
+const winstonLogger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: customFormat,
   defaultMeta: {
@@ -22,77 +29,84 @@ const logger = winston.createLogger({
     environment: process.env.NODE_ENV
   },
   transports: [
-    // Logs de error
-    new winston.transports.File({
-      filename: path.join(__dirname, '../../../logs/error.log'),
-      level: 'error',
-      maxsize: 5242880, // 5MB
-      maxFiles: 5,
-      tailable: true
-    }),
-    // Logs de autenticación
-    new winston.transports.File({
-      filename: path.join(__dirname, '../../../logs/auth.log'),
-      level: 'info',
-      maxsize: 5242880,
-      maxFiles: 5,
-      tailable: true,
+    new winston.transports.Console({
       format: winston.format.combine(
-        customFormat,
-        winston.format.printf(info => {
-          const { timestamp, level, message, metadata } = info;
-          return `${timestamp} [${level}] [AUTH] ${message} ${JSON.stringify(metadata)}`;
-        })
+        winston.format.colorize(),
+        winston.format.simple()
       )
-    }),
-    // Logs combinados
-    new winston.transports.File({
-      filename: path.join(__dirname, '../../../logs/combined.log'),
-      maxsize: 5242880,
-      maxFiles: 5,
-      tailable: true
     })
   ]
 });
 
-// Logs a consola en desarrollo
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.combine(
-      winston.format.colorize(),
-      winston.format.simple(),
-      winston.format.printf(({ timestamp, level, message, metadata }) => {
-        let msg = `${timestamp} [${level}]: ${message}`;
-        if (Object.keys(metadata).length > 0) {
-          msg += ` ${JSON.stringify(metadata)}`;
-        }
-        return msg;
-      })
-    )
-  }));
+// Inicializar FluentLogger
+let fluentLogger;
+try {
+  fluentLogger = FluentLogger.createFluentSender('auth-service', fluentConfig);
+  
+  fluentLogger.on('connect', () => {
+    winstonLogger.info('Connected to Fluentd');
+  });
+  
+  fluentLogger.on('error', (error) => {
+    winstonLogger.error('Fluentd error:', error);
+  });
+} catch (error) {
+  winstonLogger.error('Error initializing Fluentd:', error);
 }
 
-// Métodos específicos para auth
-logger.auth = {
-  login: (userId, success = true) => {
-    logger.info(`User login ${success ? 'successful' : 'failed'}`, {
-      userId,
-      event: 'login',
-      success
+// Crear funciones de logging que usan tanto Winston como Fluentd
+const createLogFunction = (level) => (message, meta = {}) => {
+  // Log con Winston
+  winstonLogger[level](message, meta);
+  
+  // Log con Fluentd
+  if (fluentLogger) {
+    const logData = {
+      message: typeof message === 'string' ? message : JSON.stringify(message),
+      level,
+      timestamp: new Date().toISOString(),
+      ...meta
+    };
+    
+    fluentLogger.emit(level, logData, (err) => {
+      if (err) {
+        winstonLogger.error('Error sending log to Fluentd:', err);
+      }
     });
-  },
-  register: (userId) => {
-    logger.info('New user registered', {
-      userId,
-      event: 'register'
-    });
-  },
-  tokenValidation: (userId, valid = true) => {
-    logger.info(`Token validation ${valid ? 'successful' : 'failed'}`, {
-      userId,
-      event: 'token_validation',
-      valid
-    });
+  }
+};
+
+// Crear el objeto logger con todas las funciones necesarias
+const logger = {
+  error: createLogFunction('error'),
+  warn: createLogFunction('warn'),
+  info: createLogFunction('info'),
+  debug: createLogFunction('debug'),
+  
+  // Funciones específicas de auth
+  auth: {
+    login: (userId, success = true) => {
+      logger.info(`User login ${success ? 'successful' : 'failed'}`, {
+        userId,
+        event: 'login',
+        success
+      });
+    },
+    
+    register: (userId) => {
+      logger.info('New user registered', {
+        userId,
+        event: 'register'
+      });
+    },
+    
+    tokenValidation: (userId, valid = true) => {
+      logger.info(`Token validation ${valid ? 'successful' : 'failed'}`, {
+        userId,
+        event: 'token_validation',
+        valid
+      });
+    }
   }
 };
 
