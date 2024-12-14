@@ -6190,3 +6190,777 @@
 2024/12/14 07:23:45 [notice] 1#1: worker process 22 exited with code 0
 2024/12/14 07:23:45 [notice] 1#1: worker process 26 exited with code 0
 2024/12/14 07:23:45 [notice] 1#1: exit
+2024/12/14 13:28:17 [notice] 1#1: using the "epoll" event method
+2024/12/14 13:28:17 [notice] 1#1: nginx/1.27.3
+2024/12/14 13:28:17 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/12/14 13:28:17 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/12/14 13:28:17 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/14 13:28:17 [notice] 1#1: start worker processes
+2024/12/14 13:28:17 [notice] 1#1: start worker process 12
+2024/12/14 13:28:17 [notice] 1#1: start worker process 13
+2024/12/14 13:28:17 [notice] 1#1: start worker process 14
+2024/12/14 13:28:17 [notice] 1#1: start worker process 15
+2024/12/14 13:28:17 [notice] 1#1: start worker process 16
+2024/12/14 13:28:17 [notice] 1#1: start worker process 17
+2024/12/14 13:28:17 [notice] 1#1: start worker process 18
+2024/12/14 13:28:17 [notice] 1#1: start worker process 19
+2024/12/14 13:28:17 [notice] 1#1: start worker process 20
+2024/12/14 13:28:17 [notice] 1#1: start worker process 21
+2024/12/14 13:28:17 [notice] 1#1: start worker process 22
+2024/12/14 13:28:17 [notice] 1#1: start worker process 23
+2024/12/14 13:28:17 [notice] 1#1: start worker process 24
+2024/12/14 13:28:17 [notice] 1#1: start worker process 25
+2024/12/14 13:28:17 [notice] 1#1: start worker process 26
+2024/12/14 13:28:17 [notice] 1#1: start worker process 27
+2024/12/14 13:28:18 [info] 12#12: *1 client closed connection while waiting for request, client: 172.21.0.11, server: 0.0.0.0:80
+2024/12/14 13:28:19 [notice] 13#13: *2 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:19 [notice] 13#13: *2 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:19 [notice] 14#14: *4 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:19 [notice] 14#14: *4 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 15#15: *6 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 15#15: *6 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 16#16: *8 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 16#16: *8 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 17#17: *10 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 17#17: *10 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 18#18: *12 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 18#18: *12 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 19#19: *14 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 19#19: *14 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 20#20: *16 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 20#20: *16 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 21#21: *18 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:20 [notice] 21#21: *18 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 22#22: *20 "^/api/auth/?(.*)$" matches "/api/auth/validate", client: 172.21.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 22#22: *20 rewritten data: "/validate", args: "", client: 172.21.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 23#23: *22 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 23#23: *22 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 24#24: *24 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 24#24: *24 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 25#25: *26 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:21 [notice] 25#25: *26 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 26#26: *28 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 26#26: *28 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 27#27: *30 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 27#27: *30 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 12#12: *32 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:22 [notice] 12#12: *32 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:23 [notice] 12#12: *34 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:23 [notice] 12#12: *34 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *36 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *36 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *38 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *38 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *40 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *40 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *42 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *42 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *44 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *44 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *46 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *46 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *48 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:25 [notice] 12#12: *48 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:26 [notice] 12#12: *50 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:26 [notice] 12#12: *50 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:27 [notice] 12#12: *52 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:27 [notice] 12#12: *52 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:27 [notice] 12#12: *54 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:27 [notice] 12#12: *54 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:45 [info] 12#12: *56 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:28:57 [notice] 12#12: *57 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 12#12: *57 rewritten data: "/register", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 12#12: *59 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 12#12: *59 rewritten data: "/login", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 12#12: *61 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 12#12: *61 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 13#13: *62 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 13#13: *62 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 13#13: *63 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:57 [notice] 13#13: *63 rewritten data: "/", args: "", client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:28:58 [info] 12#12: *54 epoll_wait() reported that client prematurely closed connection, so upstream connection is closed too while sending request to upstream, client: 172.21.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://172.21.0.9:3002/", host: "api-gateway"
+2024/12/14 13:29:15 [info] 13#13: *67 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:29:45 [info] 13#13: *68 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:30:16 [info] 13#13: *69 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:30:46 [info] 13#13: *70 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:31:16 [info] 13#13: *71 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:31:46 [info] 13#13: *72 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:32:09 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/12/14 13:32:09 [notice] 12#12: gracefully shutting down
+2024/12/14 13:32:09 [notice] 13#13: gracefully shutting down
+2024/12/14 13:32:09 [notice] 14#14: gracefully shutting down
+2024/12/14 13:32:09 [notice] 15#15: gracefully shutting down
+2024/12/14 13:32:09 [notice] 16#16: gracefully shutting down
+2024/12/14 13:32:09 [notice] 17#17: gracefully shutting down
+2024/12/14 13:32:09 [notice] 19#19: gracefully shutting down
+2024/12/14 13:32:09 [notice] 20#20: gracefully shutting down
+2024/12/14 13:32:09 [notice] 18#18: gracefully shutting down
+2024/12/14 13:32:09 [notice] 21#21: gracefully shutting down
+2024/12/14 13:32:09 [notice] 12#12: exiting
+2024/12/14 13:32:09 [notice] 22#22: gracefully shutting down
+2024/12/14 13:32:09 [notice] 23#23: gracefully shutting down
+2024/12/14 13:32:09 [notice] 24#24: gracefully shutting down
+2024/12/14 13:32:09 [notice] 24#24: exiting
+2024/12/14 13:32:09 [notice] 25#25: gracefully shutting down
+2024/12/14 13:32:09 [notice] 26#26: gracefully shutting down
+2024/12/14 13:32:09 [notice] 27#27: gracefully shutting down
+2024/12/14 13:32:09 [notice] 13#13: exiting
+2024/12/14 13:32:09 [notice] 14#14: exiting
+2024/12/14 13:32:09 [notice] 15#15: exiting
+2024/12/14 13:32:09 [notice] 16#16: exiting
+2024/12/14 13:32:09 [notice] 17#17: exiting
+2024/12/14 13:32:09 [notice] 19#19: exiting
+2024/12/14 13:32:09 [notice] 20#20: exiting
+2024/12/14 13:32:09 [notice] 19#19: exit
+2024/12/14 13:32:09 [notice] 18#18: exiting
+2024/12/14 13:32:09 [notice] 21#21: exiting
+2024/12/14 13:32:09 [notice] 12#12: exit
+2024/12/14 13:32:09 [notice] 22#22: exiting
+2024/12/14 13:32:09 [notice] 23#23: exiting
+2024/12/14 13:32:09 [notice] 24#24: exit
+2024/12/14 13:32:09 [notice] 25#25: exiting
+2024/12/14 13:32:09 [notice] 26#26: exiting
+2024/12/14 13:32:09 [notice] 27#27: exiting
+2024/12/14 13:32:09 [notice] 13#13: exit
+2024/12/14 13:32:09 [notice] 14#14: exit
+2024/12/14 13:32:09 [notice] 15#15: exit
+2024/12/14 13:32:09 [notice] 16#16: exit
+2024/12/14 13:32:09 [notice] 17#17: exit
+2024/12/14 13:32:09 [notice] 20#20: exit
+2024/12/14 13:32:09 [notice] 18#18: exit
+2024/12/14 13:32:09 [notice] 21#21: exit
+2024/12/14 13:32:09 [notice] 22#22: exit
+2024/12/14 13:32:09 [notice] 23#23: exit
+2024/12/14 13:32:09 [notice] 25#25: exit
+2024/12/14 13:32:09 [notice] 26#26: exit
+2024/12/14 13:32:09 [notice] 27#27: exit
+2024/12/14 13:32:09 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2024/12/14 13:32:09 [notice] 1#1: worker process 12 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 13 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 14 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 15 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 16 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 17 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 18 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 19 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 20 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 21 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 22 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 23 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 24 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 25 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 26 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: worker process 27 exited with code 0
+2024/12/14 13:32:09 [notice] 1#1: exit
+2024/12/14 13:37:37 [notice] 1#1: using the "epoll" event method
+2024/12/14 13:37:37 [notice] 1#1: nginx/1.27.3
+2024/12/14 13:37:37 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/12/14 13:37:37 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/12/14 13:37:37 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/14 13:37:37 [notice] 1#1: start worker processes
+2024/12/14 13:37:37 [notice] 1#1: start worker process 12
+2024/12/14 13:37:37 [notice] 1#1: start worker process 13
+2024/12/14 13:37:37 [notice] 1#1: start worker process 14
+2024/12/14 13:37:37 [notice] 1#1: start worker process 15
+2024/12/14 13:37:37 [notice] 1#1: start worker process 16
+2024/12/14 13:37:37 [notice] 1#1: start worker process 17
+2024/12/14 13:37:37 [notice] 1#1: start worker process 18
+2024/12/14 13:37:37 [notice] 1#1: start worker process 19
+2024/12/14 13:37:37 [notice] 1#1: start worker process 20
+2024/12/14 13:37:37 [notice] 1#1: start worker process 21
+2024/12/14 13:37:37 [notice] 1#1: start worker process 22
+2024/12/14 13:37:37 [notice] 1#1: start worker process 23
+2024/12/14 13:37:37 [notice] 1#1: start worker process 24
+2024/12/14 13:37:37 [notice] 1#1: start worker process 25
+2024/12/14 13:37:37 [notice] 1#1: start worker process 26
+2024/12/14 13:37:37 [notice] 1#1: start worker process 27
+2024/12/14 13:37:37 [info] 12#12: *1 client closed connection while waiting for request, client: 172.24.0.11, server: 0.0.0.0:80
+2024/12/14 13:37:39 [notice] 13#13: *2 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:39 [notice] 13#13: *2 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:39 [notice] 14#14: *4 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:39 [notice] 14#14: *4 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:39 [notice] 15#15: *6 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:39 [notice] 15#15: *6 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 16#16: *8 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 16#16: *8 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 17#17: *10 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 17#17: *10 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 18#18: *12 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 18#18: *12 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 19#19: *14 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 19#19: *14 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 20#20: *16 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 20#20: *16 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 21#21: *18 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 21#21: *18 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 22#22: *20 "^/api/auth/?(.*)$" matches "/api/auth/validate", client: 172.24.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 22#22: *20 rewritten data: "/validate", args: "", client: 172.24.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 23#23: *22 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:40 [notice] 23#23: *22 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:41 [notice] 24#24: *24 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:41 [notice] 24#24: *24 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:41 [notice] 25#25: *26 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:41 [notice] 25#25: *26 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 26#26: *28 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 26#26: *28 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 27#27: *30 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 27#27: *30 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 12#12: *32 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:42 [notice] 12#12: *32 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:43 [notice] 12#12: *34 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:43 [notice] 12#12: *34 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:44 [notice] 12#12: *36 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:44 [notice] 12#12: *36 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:44 [notice] 12#12: *38 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:44 [notice] 12#12: *38 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *40 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *40 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *42 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *42 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *44 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *44 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *46 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *46 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *48 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:45 [notice] 12#12: *48 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *50 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *50 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *52 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *52 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *54 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:37:46 [notice] 12#12: *54 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:05 [info] 12#12: *56 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:38:35 [info] 12#12: *57 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:38:46 [error] 12#12: *54 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://172.24.0.8:3002/", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 12#12: *58 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 12#12: *58 rewritten data: "/register", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 12#12: *60 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 12#12: *60 rewritten data: "/login", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *62 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *62 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *63 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *63 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *64 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:38:47 [notice] 13#13: *64 rewritten data: "/", args: "", client: 172.24.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:39:05 [info] 13#13: *68 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:39:35 [info] 13#13: *69 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:40:05 [info] 13#13: *70 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:40:36 [info] 13#13: *71 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:41:06 [info] 13#13: *72 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:41:36 [info] 13#13: *73 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:42:06 [info] 13#13: *74 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:42:36 [info] 13#13: *75 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:43:06 [info] 13#13: *76 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:43:36 [info] 13#13: *77 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:44:06 [info] 13#13: *78 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:44:36 [info] 13#13: *79 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:45:06 [info] 13#13: *80 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:45:11 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/12/14 13:45:11 [notice] 13#13: gracefully shutting down
+2024/12/14 13:45:11 [notice] 25#25: gracefully shutting down
+2024/12/14 13:45:11 [notice] 12#12: gracefully shutting down
+2024/12/14 13:45:11 [notice] 14#14: gracefully shutting down
+2024/12/14 13:45:11 [notice] 15#15: gracefully shutting down
+2024/12/14 13:45:11 [notice] 16#16: gracefully shutting down
+2024/12/14 13:45:11 [notice] 17#17: gracefully shutting down
+2024/12/14 13:45:11 [notice] 18#18: gracefully shutting down
+2024/12/14 13:45:11 [notice] 19#19: gracefully shutting down
+2024/12/14 13:45:11 [notice] 20#20: gracefully shutting down
+2024/12/14 13:45:11 [notice] 21#21: gracefully shutting down
+2024/12/14 13:45:11 [notice] 22#22: gracefully shutting down
+2024/12/14 13:45:11 [notice] 23#23: gracefully shutting down
+2024/12/14 13:45:11 [notice] 24#24: gracefully shutting down
+2024/12/14 13:45:11 [notice] 13#13: exiting
+2024/12/14 13:45:11 [notice] 27#27: gracefully shutting down
+2024/12/14 13:45:11 [notice] 26#26: gracefully shutting down
+2024/12/14 13:45:11 [notice] 25#25: exiting
+2024/12/14 13:45:11 [notice] 12#12: exiting
+2024/12/14 13:45:11 [notice] 14#14: exiting
+2024/12/14 13:45:11 [notice] 15#15: exiting
+2024/12/14 13:45:11 [notice] 16#16: exiting
+2024/12/14 13:45:11 [notice] 17#17: exiting
+2024/12/14 13:45:11 [notice] 18#18: exiting
+2024/12/14 13:45:11 [notice] 19#19: exiting
+2024/12/14 13:45:11 [notice] 20#20: exiting
+2024/12/14 13:45:11 [notice] 21#21: exiting
+2024/12/14 13:45:11 [notice] 22#22: exiting
+2024/12/14 13:45:11 [notice] 23#23: exiting
+2024/12/14 13:45:11 [notice] 24#24: exiting
+2024/12/14 13:45:11 [notice] 13#13: exit
+2024/12/14 13:45:11 [notice] 27#27: exiting
+2024/12/14 13:45:11 [notice] 26#26: exiting
+2024/12/14 13:45:11 [notice] 25#25: exit
+2024/12/14 13:45:11 [notice] 12#12: exit
+2024/12/14 13:45:11 [notice] 14#14: exit
+2024/12/14 13:45:11 [notice] 15#15: exit
+2024/12/14 13:45:11 [notice] 16#16: exit
+2024/12/14 13:45:11 [notice] 17#17: exit
+2024/12/14 13:45:11 [notice] 18#18: exit
+2024/12/14 13:45:11 [notice] 19#19: exit
+2024/12/14 13:45:11 [notice] 20#20: exit
+2024/12/14 13:45:11 [notice] 21#21: exit
+2024/12/14 13:45:11 [notice] 22#22: exit
+2024/12/14 13:45:11 [notice] 23#23: exit
+2024/12/14 13:45:11 [notice] 24#24: exit
+2024/12/14 13:45:11 [notice] 27#27: exit
+2024/12/14 13:45:11 [notice] 26#26: exit
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2024/12/14 13:45:11 [notice] 1#1: worker process 14 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 20 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 13
+2024/12/14 13:45:11 [notice] 1#1: worker process 12 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 13 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 15 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 17 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 21 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 22 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 24 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 25 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 16
+2024/12/14 13:45:11 [notice] 1#1: worker process 16 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 26 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2024/12/14 13:45:11 [notice] 1#1: worker process 27 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 13:45:11 [notice] 1#1: signal 17 (SIGCHLD) received from 18
+2024/12/14 13:45:11 [notice] 1#1: worker process 18 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 19 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: worker process 23 exited with code 0
+2024/12/14 13:45:11 [notice] 1#1: exit
+2024/12/14 13:48:05 [notice] 1#1: using the "epoll" event method
+2024/12/14 13:48:05 [notice] 1#1: nginx/1.27.3
+2024/12/14 13:48:05 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/12/14 13:48:05 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/12/14 13:48:05 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/14 13:48:05 [notice] 1#1: start worker processes
+2024/12/14 13:48:05 [notice] 1#1: start worker process 12
+2024/12/14 13:48:05 [notice] 1#1: start worker process 13
+2024/12/14 13:48:05 [notice] 1#1: start worker process 14
+2024/12/14 13:48:05 [notice] 1#1: start worker process 15
+2024/12/14 13:48:05 [notice] 1#1: start worker process 16
+2024/12/14 13:48:05 [notice] 1#1: start worker process 17
+2024/12/14 13:48:05 [notice] 1#1: start worker process 18
+2024/12/14 13:48:05 [notice] 1#1: start worker process 19
+2024/12/14 13:48:05 [notice] 1#1: start worker process 20
+2024/12/14 13:48:05 [notice] 1#1: start worker process 21
+2024/12/14 13:48:05 [notice] 1#1: start worker process 22
+2024/12/14 13:48:05 [notice] 1#1: start worker process 23
+2024/12/14 13:48:05 [notice] 1#1: start worker process 24
+2024/12/14 13:48:05 [notice] 1#1: start worker process 25
+2024/12/14 13:48:05 [notice] 1#1: start worker process 26
+2024/12/14 13:48:05 [notice] 1#1: start worker process 27
+2024/12/14 13:48:05 [info] 12#12: *1 client closed connection while waiting for request, client: 172.25.0.11, server: 0.0.0.0:80
+2024/12/14 13:48:07 [notice] 13#13: *2 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:07 [notice] 13#13: *2 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:07 [notice] 14#14: *4 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:07 [notice] 14#14: *4 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:08 [notice] 15#15: *6 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:08 [notice] 15#15: *6 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 16#16: *8 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 16#16: *8 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 17#17: *10 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 17#17: *10 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 18#18: *12 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:09 [notice] 18#18: *12 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:48:33 [info] 19#19: *14 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:49:03 [info] 20#20: *15 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:49:09 [notice] 21#21: *16 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 21#21: *16 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [error] 18#18: *12 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://172.25.0.9:3002/", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 22#22: *18 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 22#22: *18 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 23#23: *20 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 23#23: *20 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 24#24: *21 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 24#24: *21 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 25#25: *22 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:09 [notice] 25#25: *22 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 26#26: *26 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 26#26: *26 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 27#27: *28 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 27#27: *28 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *30 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *30 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *32 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *32 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *34 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:11 [notice] 12#12: *34 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *36 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *36 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *38 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *38 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *40 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *40 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *42 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *42 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *44 "^/api/auth/?(.*)$" matches "/api/auth/validate", client: 172.25.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *44 rewritten data: "/validate", args: "", client: 172.25.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *46 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *46 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *48 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *48 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *50 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:12 [notice] 12#12: *50 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:13 [notice] 12#12: *52 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:13 [notice] 12#12: *52 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:14 [notice] 12#12: *54 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:14 [notice] 12#12: *54 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:14 [notice] 12#12: *56 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:14 [notice] 12#12: *56 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:15 [notice] 12#12: *58 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:15 [notice] 12#12: *58 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 12#12: *60 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 12#12: *60 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *62 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *62 rewritten data: "/register", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *64 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *64 rewritten data: "/login", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *66 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:16 [notice] 13#13: *66 rewritten data: "/", args: "", client: 172.25.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 13:49:33 [info] 13#13: *68 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:50:03 [info] 13#13: *69 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:50:33 [info] 13#13: *70 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:51:03 [info] 13#13: *71 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:51:34 [info] 13#13: *72 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:52:04 [info] 13#13: *73 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:52:34 [info] 13#13: *74 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:53:04 [info] 13#13: *75 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:53:34 [info] 13#13: *76 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:54:04 [info] 13#13: *77 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:54:34 [info] 13#13: *78 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:55:04 [info] 13#13: *79 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:55:34 [info] 13#13: *80 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:56:04 [info] 14#14: *81 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:56:34 [info] 14#14: *82 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:57:04 [info] 14#14: *83 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:57:35 [info] 14#14: *84 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:58:05 [info] 14#14: *85 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:58:35 [info] 14#14: *86 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:59:05 [info] 14#14: *87 client 127.0.0.1 closed keepalive connection
+2024/12/14 13:59:35 [info] 14#14: *88 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:00:05 [info] 14#14: *89 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:00:35 [info] 14#14: *90 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:01:05 [info] 14#14: *91 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:01:35 [info] 14#14: *92 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:02:05 [info] 14#14: *93 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:02:35 [info] 14#14: *94 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:03:05 [info] 14#14: *95 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:03:36 [info] 14#14: *96 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:04:06 [info] 15#15: *97 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:04:36 [info] 15#15: *98 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:05:06 [info] 15#15: *99 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:05:36 [info] 15#15: *100 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:06:06 [info] 15#15: *101 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:06:36 [info] 15#15: *102 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:07:06 [info] 15#15: *103 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:07:36 [info] 15#15: *104 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:08:06 [info] 15#15: *105 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:08:36 [info] 15#15: *106 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:09:06 [info] 15#15: *107 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:09:37 [info] 15#15: *108 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:10:07 [info] 15#15: *109 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:10:37 [info] 15#15: *110 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:11:07 [info] 15#15: *111 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:11:37 [info] 15#15: *112 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:12:07 [info] 16#16: *113 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:12:37 [info] 16#16: *114 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:13:07 [info] 16#16: *115 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:13:37 [info] 16#16: *116 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:14:07 [info] 16#16: *117 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:14:37 [info] 16#16: *118 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:14:53 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/12/14 14:14:53 [notice] 14#14: gracefully shutting down
+2024/12/14 14:14:53 [notice] 15#15: gracefully shutting down
+2024/12/14 14:14:53 [notice] 13#13: gracefully shutting down
+2024/12/14 14:14:53 [notice] 16#16: gracefully shutting down
+2024/12/14 14:14:53 [notice] 12#12: gracefully shutting down
+2024/12/14 14:14:53 [notice] 21#21: gracefully shutting down
+2024/12/14 14:14:53 [notice] 17#17: gracefully shutting down
+2024/12/14 14:14:53 [notice] 18#18: gracefully shutting down
+2024/12/14 14:14:53 [notice] 19#19: gracefully shutting down
+2024/12/14 14:14:53 [notice] 16#16: exiting
+2024/12/14 14:14:53 [notice] 20#20: gracefully shutting down
+2024/12/14 14:14:53 [notice] 22#22: gracefully shutting down
+2024/12/14 14:14:53 [notice] 13#13: exiting
+2024/12/14 14:14:53 [notice] 24#24: gracefully shutting down
+2024/12/14 14:14:53 [notice] 23#23: gracefully shutting down
+2024/12/14 14:14:53 [notice] 21#21: exiting
+2024/12/14 14:14:53 [notice] 25#25: gracefully shutting down
+2024/12/14 14:14:53 [notice] 12#12: exiting
+2024/12/14 14:14:53 [notice] 18#18: exiting
+2024/12/14 14:14:53 [notice] 17#17: exiting
+2024/12/14 14:14:53 [notice] 15#15: exiting
+2024/12/14 14:14:53 [notice] 27#27: gracefully shutting down
+2024/12/14 14:14:53 [notice] 14#14: exiting
+2024/12/14 14:14:53 [notice] 26#26: gracefully shutting down
+2024/12/14 14:14:53 [notice] 21#21: exit
+2024/12/14 14:14:53 [notice] 19#19: exiting
+2024/12/14 14:14:53 [notice] 20#20: exiting
+2024/12/14 14:14:53 [notice] 22#22: exiting
+2024/12/14 14:14:53 [notice] 24#24: exiting
+2024/12/14 14:14:53 [notice] 23#23: exiting
+2024/12/14 14:14:53 [notice] 25#25: exiting
+2024/12/14 14:14:53 [notice] 13#13: exit
+2024/12/14 14:14:53 [notice] 16#16: exit
+2024/12/14 14:14:53 [notice] 22#22: exit
+2024/12/14 14:14:53 [notice] 12#12: exit
+2024/12/14 14:14:53 [notice] 15#15: exit
+2024/12/14 14:14:53 [notice] 23#23: exit
+2024/12/14 14:14:53 [notice] 18#18: exit
+2024/12/14 14:14:53 [notice] 14#14: exit
+2024/12/14 14:14:53 [notice] 27#27: exiting
+2024/12/14 14:14:53 [notice] 19#19: exit
+2024/12/14 14:14:53 [notice] 17#17: exit
+2024/12/14 14:14:53 [notice] 20#20: exit
+2024/12/14 14:14:53 [notice] 26#26: exiting
+2024/12/14 14:14:53 [notice] 27#27: exit
+2024/12/14 14:14:53 [notice] 24#24: exit
+2024/12/14 14:14:53 [notice] 25#25: exit
+2024/12/14 14:14:53 [notice] 26#26: exit
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2024/12/14 14:14:54 [notice] 1#1: worker process 22 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 23 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2024/12/14 14:14:54 [notice] 1#1: worker process 14 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 15 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 18 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 19 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 20 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 21 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 25 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 27 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 18
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2024/12/14 14:14:54 [notice] 1#1: worker process 12 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 13 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 16 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 24 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: worker process 26 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 16
+2024/12/14 14:14:54 [notice] 1#1: signal 17 (SIGCHLD) received from 17
+2024/12/14 14:14:54 [notice] 1#1: worker process 17 exited with code 0
+2024/12/14 14:14:54 [notice] 1#1: exit
+2024/12/14 14:28:39 [notice] 1#1: using the "epoll" event method
+2024/12/14 14:28:39 [notice] 1#1: nginx/1.27.3
+2024/12/14 14:28:39 [notice] 1#1: built by gcc 13.2.1 20240309 (Alpine 13.2.1_git20240309) 
+2024/12/14 14:28:39 [notice] 1#1: OS: Linux 5.10.102.1-microsoft-standard-WSL2
+2024/12/14 14:28:39 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/14 14:28:39 [notice] 1#1: start worker processes
+2024/12/14 14:28:39 [notice] 1#1: start worker process 14
+2024/12/14 14:28:39 [notice] 1#1: start worker process 15
+2024/12/14 14:28:39 [notice] 1#1: start worker process 16
+2024/12/14 14:28:39 [notice] 1#1: start worker process 17
+2024/12/14 14:28:39 [notice] 1#1: start worker process 18
+2024/12/14 14:28:39 [notice] 1#1: start worker process 19
+2024/12/14 14:28:39 [notice] 1#1: start worker process 20
+2024/12/14 14:28:39 [notice] 1#1: start worker process 21
+2024/12/14 14:28:39 [notice] 1#1: start worker process 22
+2024/12/14 14:28:39 [notice] 1#1: start worker process 23
+2024/12/14 14:28:39 [notice] 1#1: start worker process 24
+2024/12/14 14:28:39 [notice] 1#1: start worker process 25
+2024/12/14 14:28:39 [notice] 1#1: start worker process 26
+2024/12/14 14:28:39 [notice] 1#1: start worker process 27
+2024/12/14 14:28:39 [notice] 1#1: start worker process 28
+2024/12/14 14:28:39 [notice] 1#1: start worker process 29
+2024/12/14 14:28:41 [info] 14#14: *1 client closed connection while waiting for request, client: 172.26.0.11, server: 0.0.0.0:80
+2024/12/14 14:28:48 [notice] 15#15: *2 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:48 [notice] 15#15: *2 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:48 [notice] 16#16: *4 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:48 [notice] 16#16: *4 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:48 [notice] 18#18: *6 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:48 [notice] 18#18: *6 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 20#20: *8 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 20#20: *8 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 19#19: *10 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 19#19: *10 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 21#21: *12 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:28:50 [notice] 21#21: *12 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:05 [info] 22#22: *14 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:29:36 [info] 25#25: *15 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:29:51 [notice] 26#26: *16 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 26#26: *16 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [error] 21#21: *12 upstream timed out (110: Operation timed out) while reading response header from upstream, client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", upstream: "http://172.26.0.8:3002/", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 23#23: *18 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 23#23: *18 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 17#17: *20 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 17#17: *20 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 24#24: *21 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 24#24: *21 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 27#27: *22 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:51 [notice] 27#27: *22 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:53 [notice] 28#28: *26 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:53 [notice] 28#28: *26 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:53 [notice] 29#29: *28 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:53 [notice] 29#29: *28 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *30 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *30 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *32 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *32 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *34 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:54 [notice] 14#14: *34 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *36 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *36 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *38 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *38 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *40 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *40 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *42 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:55 [notice] 14#14: *42 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *44 "^/api/auth/?(.*)$" matches "/api/auth/validate", client: 172.26.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *44 rewritten data: "/validate", args: "", client: 172.26.0.11, server: localhost, request: "GET /api/auth/validate HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *46 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *46 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *48 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:56 [notice] 14#14: *48 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:57 [notice] 14#14: *50 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:57 [notice] 14#14: *50 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *52 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *52 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *54 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *54 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *56 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:58 [notice] 14#14: *56 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:59 [notice] 14#14: *58 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:29:59 [notice] 14#14: *58 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:00 [notice] 15#15: *60 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:00 [notice] 15#15: *60 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "GET /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 14#14: *62 "^/api/auth/?(.*)$" matches "/api/auth/register", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 14#14: *62 rewritten data: "/register", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/register HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 15#15: *64 "^/api/auth/?(.*)$" matches "/api/auth/login", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 15#15: *64 rewritten data: "/login", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/auth/login HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 15#15: *66 "^/api/projects/?(.*)$" matches "/api/projects", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:01 [notice] 15#15: *66 rewritten data: "/", args: "", client: 172.26.0.11, server: localhost, request: "POST /api/projects HTTP/1.1", host: "api-gateway"
+2024/12/14 14:30:06 [info] 15#15: *68 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:30:36 [info] 15#15: *69 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:31:06 [info] 15#15: *70 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:31:36 [info] 15#15: *71 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:32:06 [info] 15#15: *72 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:32:36 [info] 15#15: *73 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:33:06 [info] 15#15: *74 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:33:37 [info] 15#15: *75 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:34:07 [info] 15#15: *76 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:34:37 [info] 15#15: *77 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:35:07 [info] 15#15: *78 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:35:37 [info] 15#15: *79 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:36:07 [info] 15#15: *80 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:36:37 [info] 16#16: *81 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:37:07 [info] 16#16: *82 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:37:38 [info] 16#16: *83 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:38:08 [info] 16#16: *84 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:38:38 [info] 16#16: *85 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:39:08 [info] 16#16: *86 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:39:38 [info] 16#16: *87 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:40:08 [info] 16#16: *88 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:40:38 [info] 16#16: *89 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:41:08 [info] 16#16: *90 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:41:39 [info] 16#16: *91 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:42:09 [info] 16#16: *92 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:42:39 [info] 16#16: *93 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:43:09 [info] 16#16: *94 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:43:39 [info] 16#16: *95 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:44:09 [info] 16#16: *96 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:44:39 [info] 18#18: *97 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:45:10 [info] 18#18: *98 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:45:40 [info] 18#18: *99 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:46:10 [info] 18#18: *100 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:46:40 [info] 18#18: *101 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:47:10 [info] 18#18: *102 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:47:40 [info] 18#18: *103 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:48:10 [info] 18#18: *104 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:48:41 [info] 18#18: *105 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:49:11 [info] 18#18: *106 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:49:41 [info] 18#18: *107 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:50:11 [info] 18#18: *108 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:50:41 [info] 18#18: *109 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:51:11 [info] 18#18: *110 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:51:41 [info] 18#18: *111 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:52:11 [info] 18#18: *112 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:52:41 [info] 20#20: *113 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:53:12 [info] 20#20: *114 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:53:42 [info] 20#20: *115 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:54:12 [info] 20#20: *116 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:54:42 [info] 20#20: *117 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:55:12 [info] 20#20: *118 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:55:42 [info] 20#20: *119 client 127.0.0.1 closed keepalive connection
+2024/12/14 14:55:55 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2024/12/14 14:55:55 [notice] 16#16: gracefully shutting down
+2024/12/14 14:55:55 [notice] 18#18: gracefully shutting down
+2024/12/14 14:55:55 [notice] 20#20: gracefully shutting down
+2024/12/14 14:55:55 [notice] 15#15: gracefully shutting down
+2024/12/14 14:55:55 [notice] 14#14: gracefully shutting down
+2024/12/14 14:55:55 [notice] 17#17: gracefully shutting down
+2024/12/14 14:55:55 [notice] 19#19: gracefully shutting down
+2024/12/14 14:55:55 [notice] 23#23: gracefully shutting down
+2024/12/14 14:55:55 [notice] 27#27: gracefully shutting down
+2024/12/14 14:55:55 [notice] 22#22: gracefully shutting down
+2024/12/14 14:55:55 [notice] 21#21: gracefully shutting down
+2024/12/14 14:55:55 [notice] 26#26: gracefully shutting down
+2024/12/14 14:55:55 [notice] 24#24: gracefully shutting down
+2024/12/14 14:55:55 [notice] 28#28: gracefully shutting down
+2024/12/14 14:55:55 [notice] 25#25: gracefully shutting down
+2024/12/14 14:55:55 [notice] 16#16: exiting
+2024/12/14 14:55:55 [notice] 29#29: gracefully shutting down
+2024/12/14 14:55:55 [notice] 18#18: exiting
+2024/12/14 14:55:55 [notice] 17#17: exiting
+2024/12/14 14:55:55 [notice] 20#20: exiting
+2024/12/14 14:55:55 [notice] 15#15: exiting
+2024/12/14 14:55:55 [notice] 23#23: exiting
+2024/12/14 14:55:55 [notice] 27#27: exiting
+2024/12/14 14:55:55 [notice] 22#22: exiting
+2024/12/14 14:55:55 [notice] 19#19: exiting
+2024/12/14 14:55:55 [notice] 21#21: exiting
+2024/12/14 14:55:55 [notice] 14#14: exiting
+2024/12/14 14:55:55 [notice] 29#29: exiting
+2024/12/14 14:55:55 [notice] 26#26: exiting
+2024/12/14 14:55:55 [notice] 25#25: exiting
+2024/12/14 14:55:55 [notice] 24#24: exiting
+2024/12/14 14:55:55 [notice] 28#28: exiting
+2024/12/14 14:55:55 [notice] 15#15: exit
+2024/12/14 14:55:55 [notice] 14#14: exit
+2024/12/14 14:55:55 [notice] 22#22: exit
+2024/12/14 14:55:55 [notice] 17#17: exit
+2024/12/14 14:55:55 [notice] 16#16: exit
+2024/12/14 14:55:55 [notice] 25#25: exit
+2024/12/14 14:55:55 [notice] 26#26: exit
+2024/12/14 14:55:55 [notice] 20#20: exit
+2024/12/14 14:55:55 [notice] 19#19: exit
+2024/12/14 14:55:55 [notice] 24#24: exit
+2024/12/14 14:55:55 [notice] 27#27: exit
+2024/12/14 14:55:55 [notice] 29#29: exit
+2024/12/14 14:55:55 [notice] 23#23: exit
+2024/12/14 14:55:55 [notice] 18#18: exit
+2024/12/14 14:55:55 [notice] 21#21: exit
+2024/12/14 14:55:55 [notice] 28#28: exit
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 14
+2024/12/14 14:55:55 [notice] 1#1: worker process 14 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 15 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 16 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 17 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 22 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 26 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 29 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 15
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2024/12/14 14:55:55 [notice] 1#1: worker process 24 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2024/12/14 14:55:55 [notice] 1#1: worker process 19 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 20 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 21 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 23 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 25 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 27 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: worker process 28 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: signal 29 (SIGIO) received
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2024/12/14 14:55:55 [notice] 1#1: signal 17 (SIGCHLD) received from 18
+2024/12/14 14:55:55 [notice] 1#1: worker process 18 exited with code 0
+2024/12/14 14:55:55 [notice] 1#1: exit
