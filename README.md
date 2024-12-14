@@ -108,20 +108,120 @@ Centralizes request management for microservices.
 - **REST APIs**: **Synchronous** communication.  
 - **Event-Driven**: **Asynchronous** operations.  
 
-## 🚀 **Deployment**
+# 🚀 Deployment Guide
 
-**Clone the repository:**  
+## Prerequisites
+- Docker and Docker Compose installed
+- Kubernetes cluster (for K8s deployment)
+- Git
+
+## Local Deployment with Docker Compose
+
+1. Clone the repository:
 ```bash
 git clone https://github.com/Kvel12/Project_Manager-DS3.git
 cd Project_Manager-DS3
 ```
-**Build services with Docker Compose:**
+
+2. Build the services:
 ```bash
 docker-compose build
 ```
-**Run services locally with Docker Compose:**  
+
+3. Start the services:
 ```bash
 docker-compose up -d
+```
+
+4. Monitor the services:
+```bash
+docker-compose logs -f
+```
+
+5. Access the application:
+- API Gateway: http://localhost:80
+- Centralized Logging Dashboard: http://localhost:3005
+
+## Kubernetes Deployment
+
+1. Clone the repository (if not already done):
+```bash
+git clone https://github.com/Kvel12/Project_Manager-DS3.git
+cd Project_Manager-DS3
+```
+
+2. Prepare the node storage (required for persistent volumes):
+```bash
+ssh node01
+sudo mkdir -p /mnt/data/{auth-db,project-db,payment-db}
+sudo chmod -R 777 /mnt/data/
+exit
+```
+
+3. Apply Kubernetes configurations:
+```bash
+kubectl apply -f k8s-config.yml
+```
+
+4. Monitor the deployment:
+```bash
+kubectl get pods -w
+```
+
+5. Wait for all services to be in Running state. You can check the status with:
+```bash
+kubectl get pods
+kubectl get services
+```
+
+6. Access the services:
+- API Gateway: http://[node-ip]:30000
+- Centralized Logging Dashboard: http://[node-ip]:30005 or http://10.0.0.10:30005
+
+## Verify Deployment
+
+For both deployment methods, you can verify the system is working by:
+
+1. Checking service health:
+```bash
+# For Docker Compose
+curl http://localhost/health
+
+# For Kubernetes
+curl http://[node-ip]:30000/health
+```
+
+2. Monitoring logs:
+- Docker Compose: Access the Logging Dashboard at http://localhost:3005
+- Kubernetes: Access the Logging Dashboard at http://10.0.0.10:30005
+
+## Troubleshooting
+
+If services fail to start:
+
+1. Check service logs:
+```bash
+# Docker Compose
+docker-compose logs [service-name]
+
+# Kubernetes
+kubectl logs [pod-name]
+```
+
+2. Verify all required ports are available
+3. Ensure all persistent volume directories exist and have proper permissions
+4. Check that all required environment variables are set correctly
+
+## Cleanup
+
+To stop and remove all resources:
+
+```bash
+# Docker Compose
+docker-compose down -v
+
+# Kubernetes
+kubectl delete -f k8s-config.yml
 ```
 
 ## 🛡️ **Technologies Used**  
